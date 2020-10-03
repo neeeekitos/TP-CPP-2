@@ -11,6 +11,7 @@
 #define CATALOGUE_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include "ChainList.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -28,6 +29,10 @@ class Catalogue
 
 public:
 //----------------------------------------------------- Méthodes publiques
+    void Rechercher(char * depart, char * destination);
+    void Afficher(ChainList * tr);
+    void Ajouter(Trajet * tr);
+
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
     //
@@ -68,7 +73,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-
+    ChainList trajets;
 };
 
 //-------------------------------- Autres définitions dépendantes de <Catalogue>

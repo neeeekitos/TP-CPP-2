@@ -22,6 +22,87 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
+void ChainList::AjouterElement(Trajet * trajet)
+{
+    Element * temp = new Element();
+    temp->data = trajet;
+    temp->suivant = nullptr;
+    temp->precedent = nullptr;
+    if (tete == nullptr) {
+        tete = temp;
+        queue = temp;
+        temp = nullptr;
+    } else {
+        queue->suivant = temp;
+        queue->suivant->precedent = queue;
+        queue = temp;
+    }
+}
+
+Element * ChainList::GetSuivantElement(Element * elem)
+{
+    return elem->suivant;
+}
+
+Element * ChainList::GetPremierElement()
+{
+    return tete;
+}
+
+Element * ChainList::RechercherElement(Trajet * tr)
+{
+    Element * trajet = GetPremierElement();
+
+    /* surcharger "=" dans Trajetcpp
+    strcmp(trajet->data->depart, depart) && !strcmp(trajet->data->destination, destination*/
+    /*while (trajet != nullptr && *(trajet->data) != *tr)
+    {
+        trajet = GetSuivantElement(trajet);
+    }*/
+
+    return trajet;
+}
+
+ChainList * ChainList::RechercherParcours(char * depart, char * destination)
+{
+    int trajetCmt = 0;
+    ChainList * resultat;
+    Element * trajet = GetPremierElement();
+
+    while (trajet != nullptr)
+    {
+        if (/*!strcmp(trajet->data->depart, depart) && !strcmp(trajet->data->destination, destination) && !strcmp(trajet->data->destination, destionation)*/)
+        {
+            trajetCmt++;
+            resultat->AjouterElement(trajet->data);
+        }
+        trajet = GetSuivantElement(trajet);
+    }
+    return resultat;
+}
+
+bool ChainList::RetirerElement(Trajet * tr)
+{
+    Element * trajet = RechercherElement(tr);
+
+    if (trajet == nullptr) return false;
+
+    if (trajet->suivant != nullptr && trajet->precedent != nullptr)
+    {
+        trajet->precedent->suivant = trajet->suivant;
+        trajet->suivant->precedent = trajet->precedent;
+    } else if (trajet->suivant == nullptr)
+    {
+        queue = trajet->precedent;
+        queue->suivant = nullptr;
+    } else {
+        tete = trajet->suivant;
+        tete->precedent = nullptr;
+    }
+    
+    return true;
+}
+
 // type ChainList::Méthode ( liste des paramètres )
 // Algorithme :
 //
@@ -48,13 +129,13 @@ ChainList::ChainList ( const ChainList & unChainList )
 } //----- Fin de ChainList (constructeur de copie)
 
 
-ChainList::ChainList ( )
-// Algorithme :
-//
+ChainList::ChainList ()
 {
 #ifdef MAP
     cout << "Appel au constructeur de <ChainList>" << endl;
 #endif
+    tete = nullptr;
+    queue = nullptr;
 } //----- Fin de ChainList
 
 
@@ -65,6 +146,16 @@ ChainList::~ChainList ( )
 #ifdef MAP
     cout << "Appel au destructeur de <ChainList>" << endl;
 #endif
+    /*Trajet * temp = tete;
+    while (tete != queue)
+    {
+        if (tete = nullptr) break;
+        else {
+            temp = tete->suivant;
+            temp->
+        }
+    }
+    delete Trajet;*/
 } //----- Fin de ~ChainList
 
 
