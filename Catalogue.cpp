@@ -13,6 +13,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <cstring>
 
 //------------------------------------------------------ Include personnel
 #include "Catalogue.h"
@@ -22,6 +23,27 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
+void Catalogue::Afficher(ChainList * tr)
+{
+    int i = 1;
+    Element * trajet = tr->GetPremierElement();
+
+    while (trajet != nullptr)
+    {
+        //printf("%d : de %s à %s en %s\r\n", i, trajet->data->depart, trajet->data->destination, trajet->data->moyenTransport);
+    }
+}
+
+void Catalogue::Rechercher(char * depart, char * destination)
+{
+    Afficher(trajets.RechercherParcours(depart, destination));
+}
+
+void Catalogue::Ajouter(Trajet * tr)
+{
+    trajets.AjouterElement(tr);
+}
+
 // type Catalogue::Méthode ( liste des paramètres )
 // Algorithme :
 //
@@ -55,6 +77,7 @@ Catalogue::Catalogue ( )
 #ifdef MAP
     cout << "Appel au constructeur de <Catalogue>" << endl;
 #endif
+    ChainList trajets;
 } //----- Fin de Catalogue
 
 
