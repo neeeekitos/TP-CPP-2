@@ -25,13 +25,19 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void Catalogue::Afficher(ChainList * tr)
 {
-    int i = 1;
     Element * trajet = tr->GetPremierElement();
 
     while (trajet != nullptr)
     {
-        //printf("%d : de %s à %s en %s\r\n", i, trajet->data->depart, trajet->data->destination, trajet->data->moyenTransport);
+        cout << trajet->data->GetDepart() << endl;
+        trajet->data->Afficher();
+        trajet = trajet->suivant;
     }
+}
+
+void Catalogue::Afficher()
+{
+    this->Afficher(&trajets);
 }
 
 void Catalogue::Rechercher(char * depart, char * destination)
@@ -42,6 +48,16 @@ void Catalogue::Rechercher(char * depart, char * destination)
 void Catalogue::Ajouter(Trajet * tr)
 {
     trajets.AjouterElement(tr);
+}
+
+Trajet * Catalogue::CreerTrajetSimple(char * depart, char * destination, char * moyenTransport)
+{
+    return new TrajetSimple(destination, depart, moyenTransport);
+}
+
+Trajet * Catalogue::CreerTrajetCompose()
+{
+    return new TrajetCompose();
 }
 
 // type Catalogue::Méthode ( liste des paramètres )
@@ -71,8 +87,6 @@ Catalogue::Catalogue ( const Catalogue & unCatalogue )
 
 
 Catalogue::Catalogue ( )
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Catalogue>" << endl;

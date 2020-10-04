@@ -22,9 +22,17 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-void Trajet::Afficher( void ) 
-{
+void Trajet::Afficher( void ) {}
+
+char * Trajet::GetDestination() {
+    return nullptr;
 }
+char * Trajet::GetDepart() {
+    return nullptr;
+}
+
+
+
 
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -36,7 +44,7 @@ void Trajet::Afficher( void )
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Trajet::Trajet ( ) 
+Trajet::Trajet ( )
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Trajet>" << endl;

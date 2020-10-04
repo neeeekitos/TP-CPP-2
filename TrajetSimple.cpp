@@ -29,6 +29,16 @@ void TrajetSimple::Afficher()
     cout << "Moyen de transport : " << moyenTransport << endl;
 }
 
+char * TrajetSimple::GetDestination()
+{
+    return destination;
+}
+
+char * TrajetSimple::GetDepart()
+{
+    return depart;
+}
+
 
 //------------------------------------------------- Surcharge d'opérateurs
 //TrajetSimple & TrajetSimple::operator = ( const TrajetSimple & unTrajetSimple )
@@ -39,8 +49,9 @@ void TrajetSimple::Afficher()
 
 
 //-------------------------------------------- Constructeurs - destructeur
-TrajetSimple::TrajetSimple ( char * dest, char * dep, char * moyenT ) : Trajet( ), destination(dest), depart(dep), moyenTransport(moyenT)
+TrajetSimple::TrajetSimple ( char * dep, char * dest, char * moyenT ) : Trajet( ), destination(dest), depart(dep), moyenTransport(moyenT)
 {
+    cout << "depart est " << depart << endl;
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetSimple>" << endl;
 #endif

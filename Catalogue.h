@@ -12,6 +12,8 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "ChainList.h"
+#include "TrajetCompose.h"
+#include "TrajetSimple.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -31,7 +33,10 @@ public:
 //----------------------------------------------------- Méthodes publiques
     void Rechercher(char * depart, char * destination);
     void Afficher(ChainList * tr);
+    void Afficher();
     void Ajouter(Trajet * tr);
+    Trajet * CreerTrajetSimple(char * depart, char * destination, char * moyenTransport);
+    Trajet * CreerTrajetCompose();
 
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :

@@ -46,7 +46,7 @@ static void AfficherMenu()
 // Affiche le menu de l'application. 
 {
   cout << "Menu : " << endl; 
-  cout << "1 - Construire le catalogue." << endl;
+  cout << "1 - Ajouter un trajet au catalogue." << endl;
   cout << "2 - Afficher le catalogue." << endl;
   cout << "3 - Rechercher un trajet." << endl;
   cout << "4 - Quitter." << endl; 
@@ -72,11 +72,10 @@ static int TraiterDemande()
   switch (optionChoisie)
   {
     case '1':
-      //catalogue = new Catalogue(); quand la classe Catalogue sera implémentée
       AjouterTrajet(); 
       break;
     case '2':
-      //catalogue.AfficherCatalogue(); quand la classe Catalogue sera implémentée
+      catalogue.Afficher();
       break;
     case '3':
       RechercherTrajet(); 
@@ -134,9 +133,9 @@ static void AjouterTrajetSimple()
   cout << "Moyen de transport du trajet du trajet : "; 
   cin.getline(moyenTransport,150);
 
-  cout << "Trajet ajouté : " << endl << "    Départ : " << depart << endl << "    Destination : " << destination << endl << "    Moyen de transport : " << moyenTransport << endl; 
+  //cout << "Trajet ajouté : " << endl << "    Départ : " << depart << endl << "    Destination : " << destination << endl << "    Moyen de transport : " << moyenTransport << endl; 
 
-  //catalogue.AjouterTrajetSimple(depart,destination,moyenTransport);  quand la classe Catalogue sera implémentée
+  catalogue.Ajouter(catalogue.CreerTrajetSimple(depart,destination,moyenTransport));
 }
 
 static void AjouterTrajetCompose() 

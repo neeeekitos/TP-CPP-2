@@ -29,10 +29,11 @@ class TrajetSimple : public Trajet
 
 public:
 
-    char * destination;
-    char * depart; 
+    
 //----------------------------------------------------- Méthodes publiques
-virtual void Afficher();
+    void Afficher();
+    char * GetDepart();
+    char * GetDestination();
 
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -44,7 +45,7 @@ virtual void Afficher();
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    TrajetSimple ( char * dest, char * dep, char * moyenT );
+    TrajetSimple ( char * dep, char * dest, char * moyenT );
     // Mode d'emploi :
     //
 
@@ -58,8 +59,9 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-char * moyenTransport; 
-
+    char * moyenTransport; 
+    char * destination;
+    char * depart; 
 };
 
 //-------------------------------- Autres définitions dépendantes de <TrajetSimple>
