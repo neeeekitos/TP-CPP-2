@@ -180,8 +180,12 @@ static void AjouterTrajetCompose()
     cout << "    Escale numéro : " << i + 1 << endl << "        Départ : " << escales[i][0] << endl << "        Destination : " << escales[i][1] << endl<< "        Moyen de transport : " << escales[i][2] << endl;; 
   }
 
-  //catalogue.CreerTrajetCompose(depart,destination,escales);  quand la classe Catalogue sera implémentée
-  //tester le retour de la méthode CreerTrajetCompose de Catalogue et renvoyer un message d'erreur en cas d'échec 
+  if(depart != escales[0][0] || destination != escales[nbEscales-1][1]) {
+    cout << "Votre voyage n'est pas valide. Le départ ne correspond pas au départ de la première escale ou la destination ne correspond pas à la destination de la dernière escale." << endl; 
+  }else {
+    //catalogue.CreerTrajetCompose(escales);  quand la classe Catalogue sera implémentée
+    //tester le retour de la méthode CreerTrajetCompose de Catalogue et renvoyer un message d'erreur en cas d'échec 
+  }
 }
 
 static void RechercherTrajet() 
