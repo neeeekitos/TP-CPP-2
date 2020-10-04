@@ -47,7 +47,6 @@ Element * ChainList::GetSuivantElement(Element * elem)
 
 Element * ChainList::GetPremierElement()
 {
-    cout << "get premier elem" << tete->data->GetDepart() << endl;
     return tete;
 }
 
@@ -68,14 +67,13 @@ Element * ChainList::RechercherElement(Trajet * tr)
 ChainList * ChainList::RechercherParcours(char * depart, char * destination)
 {
     int trajetCmt = 0;
-    ChainList * resultat;
+    ChainList * resultat = new ChainList();
     Element * trajet = GetPremierElement();
 
     while (trajet != nullptr)
     {
         if (!strcmp(trajet->data->GetDepart(), depart) && !strcmp(trajet->data->GetDestination(), destination))
         {
-            trajetCmt++;
             resultat->AjouterElement(trajet->data);
         }
         trajet = GetSuivantElement(trajet);
@@ -142,22 +140,17 @@ ChainList::ChainList ()
 
 
 ChainList::~ChainList ( )
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au destructeur de <ChainList>" << endl;
 #endif
-    /*Trajet * temp = tete;
-    while (tete != queue)
+    Element * temp = queue;
+    while (tete != temp)
     {
-        if (tete = nullptr) break;
-        else {
-            temp = tete->suivant;
-            temp->
-        }
+        temp = queue->precedent;
+        delete temp->data;
+        delete temp;
     }
-    delete Trajet;*/
 } //----- Fin de ~ChainList
 
 

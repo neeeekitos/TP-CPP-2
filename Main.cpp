@@ -120,9 +120,9 @@ static void AjouterTrajetSimple()
 // Méthode appelée lorsque l'utilisateur souhaite ajouter un trajet simple au catalogue
 // Récupère la ville de départ, la ville d'arrivée et le moyen de transport, puis appelle la méthode du catalogue pour rajouter le trajet 
 {
-  char depart[150];
-  char destination[150]; 
-  char moyenTransport[150]; 
+  char * depart = new char[150];
+  char * destination = new char[150]; 
+  char * moyenTransport = new char[150]; 
 
   cout << "Départ du trajet : "; 
   cin.getline(depart,150);
@@ -130,7 +130,7 @@ static void AjouterTrajetSimple()
   cout << "Destination du trajet : "; 
   cin.getline(destination,150);
 
-  cout << "Moyen de transport du trajet du trajet : "; 
+  cout << "Moyen de transport du trajet du trajet : ";
   cin.getline(moyenTransport,150);
 
   //cout << "Trajet ajouté : " << endl << "    Départ : " << depart << endl << "    Destination : " << destination << endl << "    Moyen de transport : " << moyenTransport << endl; 
@@ -203,7 +203,7 @@ static void RechercherTrajet()
 
   cout << "Trajet souhaité : " << endl << "    Départ : " << depart << endl << "    Destination : " << destination << endl; 
 
-  //catalogue.RechercherTrajet(depart, destination); quand la classe Catalogue sera implémentée
+  catalogue.Rechercher(depart, destination);
 }
 
 

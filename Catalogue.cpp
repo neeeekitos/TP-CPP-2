@@ -29,7 +29,6 @@ void Catalogue::Afficher(ChainList * tr)
 
     while (trajet != nullptr)
     {
-        cout << trajet->data->GetDepart() << endl;
         trajet->data->Afficher();
         trajet = trajet->suivant;
     }
@@ -52,7 +51,7 @@ void Catalogue::Ajouter(Trajet * tr)
 
 Trajet * Catalogue::CreerTrajetSimple(char * depart, char * destination, char * moyenTransport)
 {
-    return new TrajetSimple(destination, depart, moyenTransport);
+    return new TrajetSimple(depart, destination, moyenTransport);
 }
 
 Trajet * Catalogue::CreerTrajetCompose()
