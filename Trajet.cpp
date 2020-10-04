@@ -36,10 +36,8 @@ void Trajet::Afficher( void )
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Trajet::Trajet ( char * dest, char * dep ) 
+Trajet::Trajet ( ) 
 {
-    destination = dest; 
-    depart = dep;
 #ifdef MAP
     cout << "Appel au constructeur de <Trajet>" << endl;
 #endif

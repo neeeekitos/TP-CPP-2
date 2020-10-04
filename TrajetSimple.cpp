@@ -39,7 +39,7 @@ void TrajetSimple::Afficher()
 
 
 //-------------------------------------------- Constructeurs - destructeur
-TrajetSimple::TrajetSimple ( char * dest, char * dep, char * moyenT ) : Trajet( dest, dep ), moyenTransport(moyenT)
+TrajetSimple::TrajetSimple ( char * dest, char * dep, char * moyenT ) : Trajet( ), destination(dest), depart(dep), moyenTransport(moyenT)
 {
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetSimple>" << endl;

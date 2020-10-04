@@ -40,7 +40,7 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Trajet ( char * dest, char * dep );
+    Trajet ( );
     // Mode d'emploi :
     //
 
