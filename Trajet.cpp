@@ -24,8 +24,6 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void Trajet::Afficher( void ) 
 {
-    cout << "Départ : " << depart << endl;
-    cout << "Destination : " << destination << endl;
 }
 
 

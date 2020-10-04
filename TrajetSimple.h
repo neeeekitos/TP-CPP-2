@@ -28,6 +28,9 @@ class TrajetSimple : public Trajet
 //----------------------------------------------------------------- PUBLIC
 
 public:
+
+    char * destination;
+    char * depart; 
 //----------------------------------------------------- Méthodes publiques
 virtual void Afficher();
 
