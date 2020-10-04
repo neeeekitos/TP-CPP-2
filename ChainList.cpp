@@ -47,6 +47,7 @@ Element * ChainList::GetSuivantElement(Element * elem)
 
 Element * ChainList::GetPremierElement()
 {
+    cout << "get premier elem" << tete->data->GetDepart() << endl;
     return tete;
 }
 
@@ -72,7 +73,7 @@ ChainList * ChainList::RechercherParcours(char * depart, char * destination)
 
     while (trajet != nullptr)
     {
-        if (!strcmp(trajet->data->depart, depart) && !strcmp(trajet->data->destination, destination) && !strcmp(trajet->data->destination, destination))
+        if (!strcmp(trajet->data->GetDepart(), depart) && !strcmp(trajet->data->GetDestination(), destination))
         {
             trajetCmt++;
             resultat->AjouterElement(trajet->data);

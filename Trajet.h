@@ -29,6 +29,9 @@ class Trajet
 public:
 //----------------------------------------------------- Méthodes publiques
     virtual void Afficher( void ); 
+    virtual char * GetDepart();
+    virtual char * GetDestination();
+
 
 
 //------------------------------------------------- Surcharge d'opérateurs
