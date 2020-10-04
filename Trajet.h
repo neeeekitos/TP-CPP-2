@@ -27,12 +27,10 @@ class Trajet
 //----------------------------------------------------------------- PUBLIC
 
 public:
+    char * destination;
+    char * depart; 
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+    virtual void Afficher( void ); 
 
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -44,22 +42,12 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Trajet ( const Trajet & unTrajet );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
-    Trajet ( );
+    Trajet ( char * dest, char * dep );
     // Mode d'emploi :
-    //
-    // Contrat :
     //
 
     virtual ~Trajet ( );
     // Mode d'emploi :
-    //
-    // Contrat :
     //
 
 //------------------------------------------------------------------ PRIVE

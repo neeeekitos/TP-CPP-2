@@ -25,10 +25,13 @@
 
 //////////////////////////////////////////////////////////////////  PUBLIC
 //---------------------------------------------------- Fonctions publiques
-// type Nom ( liste de paramètres );
-// Mode d'emploi :
-//
-// Contrat :
-//
+static void  BouclePrincipale();
+static void AfficherMenu();
+static char ScannerChar();
+static int TraiterDemande(); 
+static void AjouterTrajet(); 
+static void AjouterTrajetSimple(); 
+static void AjouterTrajetCompose(); 
+static void RechercherTrajet();
 
 #endif // MAIN_H

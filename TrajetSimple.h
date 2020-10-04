@@ -11,6 +11,7 @@
 #define TRAJETSIMPLE_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include "Trajet.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -22,17 +23,13 @@
 //
 //------------------------------------------------------------------------
 
-class TrajetSimple 
+class TrajetSimple : public Trajet
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
+virtual void Afficher();
 
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -44,22 +41,12 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    TrajetSimple ( const TrajetSimple & unTrajetSimple );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
-    TrajetSimple ( );
+    TrajetSimple ( char * dest, char * dep, char * moyenT );
     // Mode d'emploi :
-    //
-    // Contrat :
     //
 
     virtual ~TrajetSimple ( );
     // Mode d'emploi :
-    //
-    // Contrat :
     //
 
 //------------------------------------------------------------------ PRIVE
@@ -68,6 +55,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
+char * moyenTransport; 
 
 };
 

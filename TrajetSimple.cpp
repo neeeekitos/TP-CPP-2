@@ -22,11 +22,10 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type TrajetSimple::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
+void TrajetSimple::Afficher() 
+{
+    cout << "Moyen de transport : " << moyenTransport << endl;
+}
 
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -38,19 +37,7 @@ using namespace std;
 
 
 //-------------------------------------------- Constructeurs - destructeur
-TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <TrajetSimple>" << endl;
-#endif
-} //----- Fin de TrajetSimple (constructeur de copie)
-
-
-TrajetSimple::TrajetSimple ( )
-// Algorithme :
-//
+TrajetSimple::TrajetSimple ( char * dest, char * dep, char * moyenT ) : Trajet( dest, dep ), moyenTransport(moyenT)
 {
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetSimple>" << endl;
@@ -59,8 +46,6 @@ TrajetSimple::TrajetSimple ( )
 
 
 TrajetSimple::~TrajetSimple ( )
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au destructeur de <TrajetSimple>" << endl;

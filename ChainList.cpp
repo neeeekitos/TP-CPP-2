@@ -13,6 +13,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <cstring>
 
 //------------------------------------------------------ Include personnel
 #include "ChainList.h"
@@ -71,7 +72,7 @@ ChainList * ChainList::RechercherParcours(char * depart, char * destination)
 
     while (trajet != nullptr)
     {
-        if (/*!strcmp(trajet->data->depart, depart) && !strcmp(trajet->data->destination, destination) && !strcmp(trajet->data->destination, destionation)*/)
+        if (!strcmp(trajet->data->depart, depart) && !strcmp(trajet->data->destination, destination) && !strcmp(trajet->data->destination, destination))
         {
             trajetCmt++;
             resultat->AjouterElement(trajet->data);
