@@ -21,10 +21,6 @@ using namespace std;
 #include "TrajetSimple.h"
 
 ///////////////////////////////////////////////////////////////////  PRIVE
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
-
 //---------------------------------------------------- Variables statiques
 
 static Catalogue catalogue; 
@@ -41,13 +37,11 @@ static void  BouclePrincipale()
     cout << endl; 
     cout << endl; 
     AfficherMenu();
-    doitContinuer = TraiterDemande(); // demander, exécuter, et retourne 0 si stop, 1 (ou autre) si continuer
+    doitContinuer = TraiterDemande(); 
   }
 }
 
 static void AfficherMenu() 
-// Mode d'emploi : 
-// Affiche le menu de l'application. 
 {
   cout << "-------------------------------------------------------------------------" << endl; 
   cout << "Menu : " << endl; 
@@ -61,8 +55,6 @@ static void AfficherMenu()
 }
 
 static char ScannerChar() 
-// Mode d'emploi : 
-// Scanne un caractère.
 {
   char test[150];
   cin.getline(test, 150);
@@ -70,9 +62,6 @@ static char ScannerChar()
 }
 
 static int TraiterDemande() 
-// Mode d'emploi : 
-// Récupère l'option choisie par l'utilisateur et la traite. 
-// Cette méthode raffiche le menu et se rappelle elle-même pour retraiter l'option choisie par l'utilisateur. 
 {
   char optionChoisie = ScannerChar(); 
   switch (optionChoisie)
@@ -98,9 +87,6 @@ static int TraiterDemande()
 }
 
 static void AjouterTrajet() 
-// Mode d'emploi : 
-// Méthode qui gère les entrées et les sorties lors de la construction du catalogue
-// Appelle différentes méthodes en fonction de si l'utilisateur souhaite ajouter un trajet simple ou un trajet complexe
 {
   cout << "Voulez-vous ajouter un trajet simple ou un trajet composé ? Entrez S pour simple ou C pour composé." << endl;
   char typeTrajet = ScannerChar(); 
@@ -119,13 +105,9 @@ static void AjouterTrajet()
       AjouterTrajet(); 
       break;
   }
-  
 }
 
 static void AjouterTrajetSimple() 
-// Mode d'emploi :
-// Méthode appelée lorsque l'utilisateur souhaite ajouter un trajet simple au catalogue
-// Récupère la ville de départ, la ville d'arrivée et le moyen de transport, puis appelle la méthode du catalogue pour rajouter le trajet 
 {
   char * depart = new char[150];
   char * destination = new char[150]; 
@@ -140,16 +122,10 @@ static void AjouterTrajetSimple()
   cout << "Moyen de transport du trajet du trajet : ";
   cin.getline(moyenTransport,150);
 
-  //cout << "Trajet ajouté : " << endl << "    Départ : " << depart << endl << "    Destination : " << destination << endl << "    Moyen de transport : " << moyenTransport << endl; 
-
   catalogue.Ajouter(catalogue.CreerTrajetSimple(depart,destination,moyenTransport));
 }
 
 static void AjouterTrajetCompose() 
-// Mode d'emploi :
-// Méthode appelée lorsque l'utilisateur souhaite ajouter un trajet simple au catalogue
-// Récupère la ville de départ, la ville d'arrivée puis chaque trajet simple
-// Enfin, elle appelle la méthode du catalogue pour rajouter le trajet 
 {
   char continuer = 'O';
   int nbEscales = 0;
@@ -188,12 +164,9 @@ static void AjouterTrajetCompose()
 }
 
 static void RechercherTrajet() 
-// Mode d'emploi
-// Méthode appelée lorsque l'utilisateur souhaite rechercher un trajet 
-// Récupère le départ et la destination, puis appelle la méthode RechercherTrajet dans le catalogue 
 {
-  char depart[150];
-  char destination[150]; 
+  char * depart = new char[150];
+  char * destination = new char[150]; 
 
   cout << "D'où voulez-vous partir ?" << endl; 
   cin.getline(depart,150);
@@ -210,20 +183,6 @@ static void RechercherTrajet()
 //---------------------------------------------------- Fonctions publiques
 int main() 
 {
-  /*char depart[10];
-  char destination[10];
-  char moyenTransport[10];
-
-  cout << "D'où voulez-vous partir ?" << endl; 
-  cin >> depart;
-  cout << "Où voulez-vous aller ?" << endl; 
-  cin >> destination; 
-  cout << "Quel moyen de transport souhaitez-vous utiliser ?" << endl; 
-  cin >> moyenTransport;
-
-  Trajet * pt = new TrajetSimple(depart,destination,moyenTransport);
-  pt->Afficher(); */
-  
   BouclePrincipale();
   return 0; 
 }
