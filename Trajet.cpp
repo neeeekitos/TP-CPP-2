@@ -23,12 +23,8 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void Trajet::Afficher( void ) {}
 
-char * Trajet::GetDestination() {
-    return nullptr;
-}
-char * Trajet::GetDepart() {
-    return nullptr;
-}
+char * Trajet::GetDestination() { return nullptr; }
+char * Trajet::GetDepart() { return nullptr; }
 
 
 //-------------------------------------------- Constructeurs - destructeur
