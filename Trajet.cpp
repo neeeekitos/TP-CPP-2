@@ -1,12 +1,13 @@
 /*************************************************************************
                            Trajet  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $ANNEE$ par $AUTEUR$
-    e-mail               : $EMAIL$
+    début                : 01/10/2020
+    copyright            : (C) 2020 par Terekhov Nikita et Lecuyer Alison
+    e-mail               : nikita.terekhov@insa-lyon.fr 
+                         : alison.lecuyer@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Trajet> (fichier Trajet.cpp) ------------
+//------ Réalisation de la classe <Trajet> (fichier Trajet.cpp) ----------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -16,8 +17,6 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Trajet.h"
-
-//------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -30,17 +29,6 @@ char * Trajet::GetDestination() {
 char * Trajet::GetDepart() {
     return nullptr;
 }
-
-
-
-
-
-//------------------------------------------------- Surcharge d'opérateurs
-//Trajet & Trajet::operator = ( const Trajet & unTrajet )
-// Algorithme :
-//
-//{
-//} //----- Fin de operator =
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -58,8 +46,3 @@ Trajet::~Trajet ( )
     cout << "Appel au destructeur de <Trajet>" << endl;
 #endif
 } //----- Fin de ~Trajet
-
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées
