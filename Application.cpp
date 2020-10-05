@@ -1,12 +1,12 @@
 /*************************************************************************
-                           Main  -  description
+                           Application  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $ANNEE$ par $AUTEUR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Réalisation du module <Main> (fichier Main.cpp) -------------
+//---------- Réalisation du module <Application> (fichier Application.cpp) -------------
 
 /////////////////////////////////////////////////////////////////  INCLUDE
 //-------------------------------------------------------- Include système
@@ -15,7 +15,7 @@ using namespace std;
 #include <cstring>
 
 //------------------------------------------------------ Include personnel
-#include "Main.h"
+#include "Application.h"
 #include "Catalogue.h"
 #include "Trajet.h"
 #include "TrajetSimple.h"

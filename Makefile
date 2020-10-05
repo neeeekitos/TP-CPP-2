@@ -1,10 +1,10 @@
 #Makefile du TP1
 
-Main: Main.o Catalogue.o ChainList.o Trajet.o TrajetSimple.o TrajetCompose.o
-	g++ -o Main Main.o Catalogue.o ChainList.o Trajet.o TrajetSimple.o TrajetCompose.o 
+Application: Application.o Catalogue.o ChainList.o Trajet.o TrajetSimple.o TrajetCompose.o
+	g++ -o Application Application.o Catalogue.o ChainList.o Trajet.o TrajetSimple.o TrajetCompose.o 
 
-Main.o : Main.h Main.cpp
-	g++ -c Main.cpp
+Application.o : Application.h Application.cpp
+	g++ -c Application.cpp
 
 Catalogue.o : Catalogue.h Catalogue.cpp
 	g++ -c Catalogue.cpp
@@ -21,8 +21,8 @@ TrajetSimple.o : TrajetSimple.h TrajetSimple.cpp
 TrajetCompose.o : TrajetCompose.h TrajetCompose.cpp
 	g++ -c TrajetCompose.cpp
 
-run: Main
-	./Main
+run: Application
+	./Application
 
 clean:
 	rm -f *.o

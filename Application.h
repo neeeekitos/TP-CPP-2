@@ -1,17 +1,17 @@
 /*************************************************************************
-                           Main  -  description
+                           Application  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $ANNEE$ par $AUTEUR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface du module <Main> (fichier Main.h) -------------------
-#if ! defined ( MAIN_H )
-#define MAIN_H
+//---------- Interface du module <Application> (fichier Application.h) -------------------
+#if ! defined ( APPLICATION_H )
+#define APPLICATION_H
 
 //------------------------------------------------------------------------
-// Rôle du module <Main>
+// Rôle du module <Application>
 //
 //
 //------------------------------------------------------------------------
@@ -34,4 +34,4 @@ static void AjouterTrajetSimple();
 static void AjouterTrajetCompose(); 
 static void RechercherTrajet();
 
-#endif // MAIN_H
+#endif // Application_H
