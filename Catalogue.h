@@ -37,6 +37,7 @@ public:
     void Ajouter(Trajet * tr);
     Trajet * CreerTrajetSimple(char * depart, char * destination, char * moyenTransport);
     Trajet * CreerTrajetCompose();
+    bool RetirerTrajet(Trajet * tr);
 
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
