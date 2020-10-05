@@ -35,6 +35,7 @@ public:
     void Afficher();
     void AjouterEscale(Trajet * tr);
     bool RetirerEscale(Trajet * tr);
+    bool EstValide();
 
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :

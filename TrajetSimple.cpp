@@ -25,11 +25,10 @@ using namespace std;
 void TrajetSimple::Afficher() 
 {
 
-    cout << "    --------------------------------------------" << endl; 
     cout << "    Départ : " << depart << endl;
     cout << "    Destination : " << destination << endl;
     cout << "    Moyen de transport : " << moyenTransport << endl;
-    cout << "    --------------------------------------------" << endl; 
+    cout << endl; 
 }
 
 char * TrajetSimple::GetDestination()

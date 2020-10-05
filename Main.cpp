@@ -180,12 +180,11 @@ static void AjouterTrajetCompose()
     nbEscales++; 
   } 
 
-  catalogue.Ajouter(pt_trajetCompose);
-  /*if(pt_trajetCompose->EstValide()) {
+  if(!dynamic_cast<TrajetCompose*>(pt_trajetCompose)->EstValide()) {
     cout << "Votre voyage n'est pas valide." << endl; 
   }else {
     catalogue.Ajouter(pt_trajetCompose);
-  }*/
+  }
 }
 
 static void RechercherTrajet() 

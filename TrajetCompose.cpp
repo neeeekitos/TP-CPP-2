@@ -24,8 +24,10 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void TrajetCompose::Afficher() 
 {
-    cout << "Départ du trajet composé : " << GetDepart() << endl; 
-    cout << "Destination du trajet composé : " << GetDestination() << endl; 
+    cout << "    ----------------------" << endl; 
+    cout << "    Départ du trajet composé : " << GetDepart() << endl; 
+    cout << "    Destination du trajet composé : " << GetDestination() << endl; 
+    cout << endl; 
     Element * trajet = trajetsSimples.GetPremierElement();
 
     while (trajet != nullptr)
@@ -33,6 +35,8 @@ void TrajetCompose::Afficher()
         trajet->data->Afficher();
         trajet = trajet->suivant;
     }
+    cout << "    ----------------------" << endl; 
+    cout << endl; 
 }
 
 char * TrajetCompose::GetDepart()
@@ -53,6 +57,12 @@ void TrajetCompose::AjouterEscale(Trajet * tr)
 bool TrajetCompose::RetirerEscale(Trajet * tr)
 {
     return trajetsSimples.RetirerElement(tr);
+}
+
+bool TrajetCompose::EstValide() 
+{
+    // TODO 
+    return true; 
 }
 
 
