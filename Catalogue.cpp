@@ -46,7 +46,9 @@ void Catalogue::Afficher()
 
 void Catalogue::Rechercher(char * depart, char * destination)
 {
-    Afficher(trajets.RechercherParcours(depart, destination));
+    ChainList * resultatTrajets = trajets.RechercherParcours(depart, destination);
+    Afficher(resultatTrajets);
+    //delete resultatTrajets;
 }
 
 void Catalogue::Ajouter(Trajet * tr)
