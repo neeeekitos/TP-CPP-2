@@ -62,6 +62,10 @@ Trajet * Catalogue::CreerTrajetCompose()
     return new TrajetCompose();
 }
 
+bool Catalogue::RetirerTrajet(Trajet * tr)
+{
+    return trajets.RetirerElement(tr);
+}
 // type Catalogue::Méthode ( liste des paramètres )
 // Algorithme :
 //
