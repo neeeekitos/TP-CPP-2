@@ -50,6 +50,12 @@ Element * ChainList::GetPremierElement()
     return tete;
 }
 
+Element * ChainList::GetDernierElement()
+{
+    return queue;
+}
+
+
 Element * ChainList::RechercherElement(Trajet * tr)
 {
     Element * trajet = GetPremierElement();

@@ -12,6 +12,7 @@
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
+#include "ChainList.h"
 
 //------------------------------------------------------------- Constantes
 
@@ -29,6 +30,10 @@ class TrajetCompose : public Trajet
 
 public:
 //----------------------------------------------------- Méthodes publiques
+    char * GetDestination();
+    char * GetDepart();
+    void Afficher();
+
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :
     //
@@ -69,7 +74,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
-
+    ChainList trajetsSimples;
 };
 
 //-------------------------------- Autres définitions dépendantes de <TrajetCompose>
