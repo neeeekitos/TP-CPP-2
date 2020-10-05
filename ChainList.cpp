@@ -84,6 +84,7 @@ ChainList * ChainList::RechercherParcours(char * depart, char * destination)
         }
         trajet = GetSuivantElement(trajet);
     }
+
     return resultat;
 }
 
@@ -150,12 +151,18 @@ ChainList::~ChainList ( )
 #ifdef MAP
     cout << "Appel au destructeur de <ChainList>" << endl;
 #endif
+    cout << "deallocation :::::::::::" << endl;
+
     Element * temp = queue;
-    while (tete != temp)
+
+    while (queue != nullptr)
     {
         temp = queue->precedent;
-        delete temp->data;
-        delete temp;
+        cout << "deallocation de " << endl;
+        queue->data->Afficher();
+        delete queue->data;
+        delete queue;
+        queue = temp;
     }
 } //----- Fin de ~ChainList
 
