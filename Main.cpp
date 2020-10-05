@@ -12,6 +12,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <cstring>
 
 //------------------------------------------------------ Include personnel
 #include "Main.h"
@@ -165,22 +166,29 @@ static void AjouterTrajetCompose()
     cin.getline(escales[nbEscales][2],150);
 
     cout << "Voulez vous ajouter une autre escale ? O pour oui, N pour non." << endl;
-    cin >> continuer; 
+    continuer = ScannerChar();
     while(continuer != 'O' && continuer != 'N'){
       cout << "Action impossible. Veuillez entrer O pour oui ou N pour non " << endl; 
-      cin >> continuer; 
+      continuer = ScannerChar();
     }
     nbEscales++;
   } 
 
 
+  bool valide = true;
   cout << "Vous avez rajouté le trajet composé suivant : " << endl << "    Départ : " << depart << endl << "    Destination : " << destination << endl; 
   for(int i = 0; i < nbEscales; i++) {
     cout << "    Escale numéro : " << i + 1 << endl << "        Départ : " << escales[i][0] << endl << "        Destination : " << escales[i][1] << endl<< "        Moyen de transport : " << escales[i][2] << endl;; 
+    if(i + 1 < nbEscales && strcmp(escales[i][1],escales[i+1][0]))
+      valide = false;
   }
 
-  if(depart != escales[0][0] || destination != escales[nbEscales-1][1]) {
-    cout << "Votre voyage n'est pas valide. Le départ ne correspond pas au départ de la première escale ou la destination ne correspond pas à la destination de la dernière escale." << endl; 
+  if(strcmp(depart,escales[0][0]) != 0) {
+    cout << "Votre voyage n'est pas valide. La ville de départ du trajet composé ne correspond pas à la ville de départ de la première escale." << endl; 
+  }else if(strcmp(destination,escales[nbEscales-1][1]) != 0) {
+    cout << "Votre voyage n'est pas valide. La ville d'arrivée du trajet composé ne correspond pas à la ville d'arrivée de la dernière escale" << endl; 
+  }else if(!valide) {
+    cout << "Votre voyage n'est pas valide. La ville d'arrivée d'une escale doit correspondre soit à la ville de départ de l'escale suivante, soit à la ville d'arrivée du trajet composé." << endl; 
   }else {
     //catalogue.CreerTrajetCompose(escales);  quand la classe Catalogue sera implémentée
     //tester le retour de la méthode CreerTrajetCompose de Catalogue et renvoyer un message d'erreur en cas d'échec 
@@ -196,10 +204,10 @@ static void RechercherTrajet()
   char destination[150]; 
 
   cout << "D'où voulez-vous partir ?" << endl; 
-  cin >> depart; 
+  cin.getline(depart,150);
 
   cout << "Où voulez-vous aller ?" << endl; 
-  cin >> destination; 
+  cin.getline(destination,150);
 
   cout << "Trajet souhaité : " << endl << "    Départ : " << depart << endl << "    Destination : " << destination << endl; 
 
