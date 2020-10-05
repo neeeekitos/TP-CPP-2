@@ -25,5 +25,5 @@ run: Application
 	./Application
 
 clean:
+	rm -f Application
 	rm -f *.o
-
