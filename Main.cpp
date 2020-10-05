@@ -37,6 +37,9 @@ static void  BouclePrincipale()
 
   while(doitContinuer)
   {
+    cout << endl; 
+    cout << endl; 
+    cout << endl; 
     AfficherMenu();
     doitContinuer = TraiterDemande(); // demander, exécuter, et retourne 0 si stop, 1 (ou autre) si continuer
   }
@@ -46,12 +49,14 @@ static void AfficherMenu()
 // Mode d'emploi : 
 // Affiche le menu de l'application. 
 {
+  cout << "-------------------------------------------------------------------------" << endl; 
   cout << "Menu : " << endl; 
   cout << "1 - Ajouter un trajet au catalogue." << endl;
   cout << "2 - Afficher le catalogue." << endl;
   cout << "3 - Rechercher un trajet." << endl;
   cout << "4 - Quitter." << endl; 
   cout << "Veuillez entrer le numéro de l'action que vous souhaitez réaliser :" << endl; 
+  cout << "-------------------------------------------------------------------------" << endl; 
 
 }
 
@@ -76,6 +81,7 @@ static int TraiterDemande()
       AjouterTrajet(); 
       break;
     case '2':
+      cout << "Trajets du catalogue : " << endl; 
       catalogue.Afficher();
       break;
     case '3':
@@ -145,25 +151,25 @@ static void AjouterTrajetCompose()
 // Récupère la ville de départ, la ville d'arrivée puis chaque trajet simple
 // Enfin, elle appelle la méthode du catalogue pour rajouter le trajet 
 {
-  char depart[150];
-  char destination[150]; 
   char continuer = 'O';
-  char escales[100][3][150];
   int nbEscales = 0;
-
-  cout << "Départ du trajet : "; 
-  cin.getline(depart,150);
-
-  cout << "Destination du trajet : "; 
-  cin.getline(destination,150);
+  Trajet * pt_trajetCompose = catalogue.CreerTrajetCompose(); 
 
   while(continuer == 'O') {
+    char * dep = new char[150];
+    char * dest = new char[150]; 
+    char * moyenTransport = new char[150];
+
     cout << "Départ de l'escale numéro " << nbEscales + 1 << " : ";
-    cin.getline(escales[nbEscales][0],150);
+    cin.getline(dep,150);
+
     cout << "Destination de l'escale numéro : " << nbEscales + 1 << " : ";
-    cin.getline(escales[nbEscales][1],150);
+    cin.getline(dest,150);
+
     cout << "Moyen de transport de l'escale numéro : " << nbEscales + 1 << " : ";
-    cin.getline(escales[nbEscales][2],150);
+    cin.getline(moyenTransport,150);
+
+    dynamic_cast<TrajetCompose*>(pt_trajetCompose)->AjouterEscale(catalogue.CreerTrajetSimple(dep,dest,moyenTransport));
 
     cout << "Voulez vous ajouter une autre escale ? O pour oui, N pour non." << endl;
     continuer = ScannerChar();
@@ -171,28 +177,15 @@ static void AjouterTrajetCompose()
       cout << "Action impossible. Veuillez entrer O pour oui ou N pour non " << endl; 
       continuer = ScannerChar();
     }
-    nbEscales++;
+    nbEscales++; 
   } 
 
-
-  bool valide = true;
-  cout << "Vous avez rajouté le trajet composé suivant : " << endl << "    Départ : " << depart << endl << "    Destination : " << destination << endl; 
-  for(int i = 0; i < nbEscales; i++) {
-    cout << "    Escale numéro : " << i + 1 << endl << "        Départ : " << escales[i][0] << endl << "        Destination : " << escales[i][1] << endl<< "        Moyen de transport : " << escales[i][2] << endl;; 
-    if(i + 1 < nbEscales && strcmp(escales[i][1],escales[i+1][0]))
-      valide = false;
-  }
-
-  if(strcmp(depart,escales[0][0]) != 0) {
-    cout << "Votre voyage n'est pas valide. La ville de départ du trajet composé ne correspond pas à la ville de départ de la première escale." << endl; 
-  }else if(strcmp(destination,escales[nbEscales-1][1]) != 0) {
-    cout << "Votre voyage n'est pas valide. La ville d'arrivée du trajet composé ne correspond pas à la ville d'arrivée de la dernière escale" << endl; 
-  }else if(!valide) {
-    cout << "Votre voyage n'est pas valide. La ville d'arrivée d'une escale doit correspondre soit à la ville de départ de l'escale suivante, soit à la ville d'arrivée du trajet composé." << endl; 
+  catalogue.Ajouter(pt_trajetCompose);
+  /*if(pt_trajetCompose->EstValide()) {
+    cout << "Votre voyage n'est pas valide." << endl; 
   }else {
-    //catalogue.CreerTrajetCompose(escales);  quand la classe Catalogue sera implémentée
-    //tester le retour de la méthode CreerTrajetCompose de Catalogue et renvoyer un message d'erreur en cas d'échec 
-  }
+    catalogue.Ajouter(pt_trajetCompose);
+  }*/
 }
 
 static void RechercherTrajet() 
@@ -209,8 +202,7 @@ static void RechercherTrajet()
   cout << "Où voulez-vous aller ?" << endl; 
   cin.getline(destination,150);
 
-  cout << "Trajet souhaité : " << endl << "    Départ : " << depart << endl << "    Destination : " << destination << endl; 
-
+  cout << "Vous pouvez prendre le(s) trajet(s) suivants : " << endl; 
   catalogue.Rechercher(depart, destination);
 }
 

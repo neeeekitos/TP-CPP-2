@@ -52,12 +52,12 @@ void Catalogue::Ajouter(Trajet * tr)
     trajets.AjouterElement(tr);
 }
 
-Trajet * Catalogue::CreerTrajetSimple(char * depart, char * destination, char * moyenTransport)
+TrajetSimple * Catalogue::CreerTrajetSimple(char * depart, char * destination, char * moyenTransport)
 {
     return new TrajetSimple(depart, destination, moyenTransport);
 }
 
-Trajet * Catalogue::CreerTrajetCompose()
+TrajetCompose * Catalogue::CreerTrajetCompose()
 {
     return new TrajetCompose();
 }

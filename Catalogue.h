@@ -35,8 +35,8 @@ public:
     void Afficher(ChainList * tr);
     void Afficher();
     void Ajouter(Trajet * tr);
-    Trajet * CreerTrajetSimple(char * depart, char * destination, char * moyenTransport);
-    Trajet * CreerTrajetCompose();
+    TrajetSimple * CreerTrajetSimple(char * depart, char * destination, char * moyenTransport);
+    TrajetCompose * CreerTrajetCompose();
     bool RetirerTrajet(Trajet * tr);
 
     // type Méthode ( liste des paramètres );

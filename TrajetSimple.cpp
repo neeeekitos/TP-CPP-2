@@ -24,9 +24,12 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void TrajetSimple::Afficher() 
 {
-    cout << "Départ : " << depart << endl;
-    cout << "Destination : " << destination << endl;
-    cout << "Moyen de transport : " << moyenTransport << endl;
+
+    cout << "    --------------------------------------------" << endl; 
+    cout << "    Départ : " << depart << endl;
+    cout << "    Destination : " << destination << endl;
+    cout << "    Moyen de transport : " << moyenTransport << endl;
+    cout << "    --------------------------------------------" << endl; 
 }
 
 char * TrajetSimple::GetDestination()
@@ -51,7 +54,6 @@ char * TrajetSimple::GetDepart()
 //-------------------------------------------- Constructeurs - destructeur
 TrajetSimple::TrajetSimple ( char * dep, char * dest, char * moyenT ) : Trajet( ), destination(dest), depart(dep), moyenTransport(moyenT)
 {
-    cout << "depart est " << depart << endl;
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetSimple>" << endl;
 #endif
