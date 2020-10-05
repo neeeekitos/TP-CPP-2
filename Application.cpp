@@ -1,12 +1,13 @@
 /*************************************************************************
                            Application  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $ANNEE$ par $AUTEUR$
-    e-mail               : $EMAIL$
+    début                : 01/10/2020
+    copyright            : (C) 2020 par Terekhov Nikita et Lecuyer Alison
+    e-mail               : nikita.terekhov@insa-lyon.fr 
+                         : alison.lecuyer@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation du module <Application> (fichier Application.cpp) -------------
+//---- Réalisation du module <Application> (fichier Application.cpp) -----
 
 /////////////////////////////////////////////////////////////////  INCLUDE
 //-------------------------------------------------------- Include système
@@ -20,8 +21,6 @@ using namespace std;
 #include "TrajetSimple.h"
 
 ///////////////////////////////////////////////////////////////////  PRIVE
-//---------------------------------------------------- Variables statiques
-
 //------------------------------------------------------ Fonctions privées
 
 static void  BouclePrincipale(Catalogue &catalogue) 
@@ -136,10 +135,10 @@ static void AjouterTrajetCompose(Catalogue &catalogue)
     cout << "Départ de l'escale numéro " << nbEscales + 1 << " : ";
     cin.getline(dep,150);
 
-    cout << "Destination de l'escale numéro : " << nbEscales + 1 << " : ";
+    cout << "Destination de l'escale numéro " << nbEscales + 1 << " : ";
     cin.getline(dest,150);
 
-    cout << "Moyen de transport de l'escale numéro : " << nbEscales + 1 << " : ";
+    cout << "Moyen de transport de l'escale numéro " << nbEscales + 1 << " : ";
     cin.getline(moyenTransport,150);
 
     dynamic_cast<TrajetCompose*>(pt_trajetCompose)->AjouterEscale(catalogue.CreerTrajetSimple(dep,dest,moyenTransport));

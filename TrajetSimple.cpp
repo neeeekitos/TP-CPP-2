@@ -1,12 +1,13 @@
 /*************************************************************************
                            TrajetSimple  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $ANNEE$ par $AUTEUR$
-    e-mail               : $EMAIL$
+    début                : 01/10/2020
+    copyright            : (C) 2020 par Terekhov Nikita et Lecuyer Alison
+    e-mail               : nikita.terekhov@insa-lyon.fr 
+                         : alison.lecuyer@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <TrajetSimple> (fichier TrajetSimple.cpp) ------------
+//-- Réalisation de la classe <TrajetSimple> (fichier TrajetSimple.cpp) --
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -17,14 +18,11 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "TrajetSimple.h"
 
-//------------------------------------------------------------- Constantes
-
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
 void TrajetSimple::Afficher() 
 {
-
     cout << "    Départ : " << depart << endl;
     cout << "    Destination : " << destination << endl;
     cout << "    Moyen de transport : " << moyenTransport << endl;
@@ -42,16 +40,9 @@ char * TrajetSimple::GetDepart()
 }
 
 
-//------------------------------------------------- Surcharge d'opérateurs
-//TrajetSimple & TrajetSimple::operator = ( const TrajetSimple & unTrajetSimple )
-// Algorithme :
-//
-//{
-//} //----- Fin de operator =
-
-
 //-------------------------------------------- Constructeurs - destructeur
-TrajetSimple::TrajetSimple ( char * dep, char * dest, char * moyenT ) : Trajet( ), destination(dest), depart(dep), moyenTransport(moyenT)
+TrajetSimple::TrajetSimple ( char * dep, char * dest, char * moyenT ) : 
+Trajet( ), destination(dest), depart(dep), moyenTransport(moyenT)
 {
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetSimple>" << endl;
@@ -68,8 +59,3 @@ TrajetSimple::~TrajetSimple ( )
     delete[] destination;
     delete[] moyenTransport;
 } //----- Fin de ~TrajetSimple
-
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées

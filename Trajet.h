@@ -1,20 +1,15 @@
 /*************************************************************************
                            Trajet  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $ANNEE$ par $AUTEUR$
-    e-mail               : $EMAIL$
+    début                : 01/10/2020
+    copyright            : (C) 2020 par Terekhov Nikita et Lecuyer Alison
+    e-mail               : nikita.terekhov@insa-lyon.fr 
+                         : alison.lecuyer@insa-lyon.fr
 *************************************************************************/
 
 //---------- Interface de la classe <Trajet> (fichier Trajet.h) ----------------
 #if ! defined ( TRAJET_H )
 #define TRAJET_H
-
-//--------------------------------------------------- Interfaces utilisées
-
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
 // Rôle de la classe <Trajet>
@@ -29,18 +24,16 @@ class Trajet
 public:
 //----------------------------------------------------- Méthodes publiques
     virtual void Afficher( void ); 
-    virtual char * GetDepart();
-    virtual char * GetDestination();
-
-
-
-//------------------------------------------------- Surcharge d'opérateurs
-    //Trajet & operator = ( const Trajet & unTrajet );
     // Mode d'emploi :
     //
-    // Contrat :
-    //
 
+    virtual char * GetDepart();
+    // Mode d'emploi :
+    //
+    
+    virtual char * GetDestination();
+    // Mode d'emploi :
+    //
 
 //-------------------------------------------- Constructeurs - destructeur
     Trajet ( );
@@ -54,13 +47,8 @@ public:
 //------------------------------------------------------------------ PRIVE
 
 protected:
-//----------------------------------------------------- Méthodes protégées
-
-//----------------------------------------------------- Attributs protégés
 
 };
-
-//-------------------------------- Autres définitions dépendantes de <Trajet>
 
 #endif // TRAJET_H
 
