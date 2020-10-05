@@ -16,7 +16,6 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Application.h"
-#include "Catalogue.h"
 #include "Trajet.h"
 #include "TrajetSimple.h"
 
@@ -25,7 +24,7 @@ using namespace std;
 
 //------------------------------------------------------ Fonctions privées
 
-static void  BouclePrincipale(Catalogue catalogue) 
+static void  BouclePrincipale(Catalogue &catalogue) 
 {
   bool doitContinuer = true;
 
@@ -59,7 +58,7 @@ static char ScannerChar()
   return test[0]; 
 }
 
-static int TraiterDemande(Catalogue catalogue) 
+static int TraiterDemande(Catalogue &catalogue) 
 {
   char optionChoisie = ScannerChar(); 
   switch (optionChoisie)
@@ -84,7 +83,7 @@ static int TraiterDemande(Catalogue catalogue)
   return 1;
 }
 
-static void AjouterTrajet(Catalogue catalogue) 
+static void AjouterTrajet(Catalogue &catalogue) 
 {
   cout << "Voulez-vous ajouter un trajet simple ou un trajet composé ? Entrez S pour simple ou C pour composé." << endl;
   char typeTrajet = ScannerChar(); 
@@ -105,7 +104,7 @@ static void AjouterTrajet(Catalogue catalogue)
   }
 }
 
-static void AjouterTrajetSimple(Catalogue catalogue) 
+static void AjouterTrajetSimple(Catalogue &catalogue) 
 {
   char * depart = new char[150];
   char * destination = new char[150]; 
@@ -123,7 +122,7 @@ static void AjouterTrajetSimple(Catalogue catalogue)
   catalogue.Ajouter(catalogue.CreerTrajetSimple(depart,destination,moyenTransport));
 }
 
-static void AjouterTrajetCompose(Catalogue catalogue) 
+static void AjouterTrajetCompose(Catalogue &catalogue) 
 {
   char continuer = 'O';
   int nbEscales = 0;
@@ -161,7 +160,7 @@ static void AjouterTrajetCompose(Catalogue catalogue)
   }
 }
 
-static void RechercherTrajet(Catalogue catalogue) 
+static void RechercherTrajet(Catalogue &catalogue) 
 {
   char * depart = new char[150];
   char * destination = new char[150]; 
