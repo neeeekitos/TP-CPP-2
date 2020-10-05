@@ -31,7 +31,9 @@ void Catalogue::Afficher(ChainList * tr)
     else {
         while (trajet != nullptr)
         {
+            cout << "    --------------------------------" << endl; 
             trajet->data->Afficher();
+            cout << "    --------------------------------" << endl; 
             trajet = trajet->suivant;
         }
     }

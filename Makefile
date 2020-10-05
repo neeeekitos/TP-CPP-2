@@ -1,7 +1,7 @@
 #Makefile du TP1
 
 Main: Main.o Catalogue.o ChainList.o Trajet.o TrajetSimple.o TrajetCompose.o
-	g++ -o Main Main.o Catalogue.o ChainList.o Trajet.o TrajetSimple.o TrajetCompose.o -lm
+	g++ -o Main Main.o Catalogue.o ChainList.o Trajet.o TrajetSimple.o TrajetCompose.o 
 
 Main.o : Main.h Main.cpp
 	g++ -c Main.cpp

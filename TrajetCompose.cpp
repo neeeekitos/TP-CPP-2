@@ -13,6 +13,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <cstring>
 
 //------------------------------------------------------ Include personnel
 #include "TrajetCompose.h"
@@ -24,19 +25,16 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void TrajetCompose::Afficher() 
 {
-    cout << "    ----------------------" << endl; 
     cout << "    Départ du trajet composé : " << GetDepart() << endl; 
     cout << "    Destination du trajet composé : " << GetDestination() << endl; 
-    cout << endl; 
     Element * trajet = trajetsSimples.GetPremierElement();
 
     while (trajet != nullptr)
     {
+        cout << endl; 
         trajet->data->Afficher();
         trajet = trajet->suivant;
     }
-    cout << "    ----------------------" << endl; 
-    cout << endl; 
 }
 
 char * TrajetCompose::GetDepart()
@@ -61,7 +59,15 @@ bool TrajetCompose::RetirerEscale(Trajet * tr)
 
 bool TrajetCompose::EstValide() 
 {
-    // TODO 
+    Element * trajet = trajetsSimples.GetPremierElement();
+
+    while (trajet != nullptr)
+    {
+        if(trajet->suivant != nullptr && strcmp(trajet->data->GetDestination(),trajet->suivant->data->GetDepart())) {
+            return false; 
+        }
+        trajet = trajet->suivant;
+    }
     return true; 
 }
 

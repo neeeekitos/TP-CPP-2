@@ -28,7 +28,6 @@ void TrajetSimple::Afficher()
     cout << "    Départ : " << depart << endl;
     cout << "    Destination : " << destination << endl;
     cout << "    Moyen de transport : " << moyenTransport << endl;
-    cout << endl; 
 }
 
 char * TrajetSimple::GetDestination()
