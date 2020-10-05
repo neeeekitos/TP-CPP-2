@@ -24,7 +24,15 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void TrajetCompose::Afficher() 
 {
-    cout << "à redéfinir la méthode afficher du trajet composé" << endl;
+    cout << "Départ du trajet composé : " << GetDepart() << endl; 
+    cout << "Destination du trajet composé : " << GetDestination() << endl; 
+    Element * trajet = trajetsSimples.GetPremierElement();
+
+    while (trajet != nullptr)
+    {
+        trajet->data->Afficher();
+        trajet = trajet->suivant;
+    }
 }
 
 char * TrajetCompose::GetDepart()
