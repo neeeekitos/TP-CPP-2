@@ -47,6 +47,9 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
+
+    TrajetSimple ( const TrajetSimple & unTrajetSimple );
+
     TrajetSimple ( char * dep, char * dest, char * moyenT );
     // Mode d'emploi :
     // Constructeur d'un trajet simple. 

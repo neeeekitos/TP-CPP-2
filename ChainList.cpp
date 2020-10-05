@@ -18,6 +18,8 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "ChainList.h"
+#include "TrajetCompose.h"
+#include "TrajetSimple.h"
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -79,7 +81,7 @@ ChainList * ChainList::RechercherParcours(char * depart, char * destination)
     while (trajet != nullptr)
     {
         if (!strcmp(trajet->data->GetDepart(), depart) && !strcmp(trajet->data->GetDestination(), destination))
-        {
+        {           
             resultat->AjouterElement(trajet->data);
         }
         trajet = GetSuivantElement(trajet);
@@ -107,6 +109,18 @@ bool ChainList::RetirerElement(Trajet * tr)
     }
     
     return true;
+}
+
+void ChainList::RetirerAll()
+{
+    Element * temp = queue;
+
+    while (queue != nullptr)
+    {
+        temp = queue->precedent;
+        delete queue;
+        queue = temp;
+    }
 }
 
 

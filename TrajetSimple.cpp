@@ -14,6 +14,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <cstring>
 
 //------------------------------------------------------ Include personnel
 #include "TrajetSimple.h"
@@ -41,6 +42,14 @@ char * TrajetSimple::GetDepart()
 
 
 //-------------------------------------------- Constructeurs - destructeur
+TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple ) : Trajet()
+{
+    strcpy(depart, unTrajetSimple.depart);
+    strcpy(destination, unTrajetSimple.destination);
+    strcpy(moyenTransport, unTrajetSimple.moyenTransport);
+    cout << "child constructor trajet simple is working" <<endl;
+}
+
 TrajetSimple::TrajetSimple ( char * dep, char * dest, char * moyenT ) : 
 Trajet( ), destination(dest), depart(dep), moyenTransport(moyenT)
 {

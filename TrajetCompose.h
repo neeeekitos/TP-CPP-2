@@ -67,6 +67,8 @@ public:
     // de l'escale suivante. 
 
 //-------------------------------------------- Constructeurs - destructeur
+    TrajetCompose ( const TrajetCompose & unTrajetCompose ) = default;
+
     TrajetCompose ( );
     // Mode d'emploi :
     // Constructeur de TrajetCompose. 

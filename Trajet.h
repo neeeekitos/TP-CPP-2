@@ -41,6 +41,8 @@ public:
     // Elle est redéfinie par les classes TrajetSimple et TrajetCompose.
 
 //-------------------------------------------- Constructeurs - destructeur
+    Trajet ( const Trajet & unTrajet ) = default;
+
     Trajet ( );
     // Mode d'emploi :
     // Constructeur d'un Trajet. 

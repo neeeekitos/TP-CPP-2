@@ -57,13 +57,13 @@ public:
     // Mode d'emploi :
     //
 
-    // Mode d'emploi :
-    //
-
     bool RetirerElement(Trajet * tr);
     // Mode d'emploi :
     //
 
+    void RetirerAll();
+    // Mode d'emploi :
+    //
 
 //-------------------------------------------- Constructeurs - destructeur
     ChainList ( const ChainList & unChainList );
