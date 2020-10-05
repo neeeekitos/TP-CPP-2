@@ -27,10 +27,13 @@ void Catalogue::Afficher(ChainList * tr)
 {
     Element * trajet = tr->GetPremierElement();
 
-    while (trajet != nullptr)
-    {
-        trajet->data->Afficher();
-        trajet = trajet->suivant;
+    if (trajet == nullptr) cout << "Aucun trajet" << endl;
+    else {
+        while (trajet != nullptr)
+        {
+            trajet->data->Afficher();
+            trajet = trajet->suivant;
+        }
     }
 }
 
@@ -90,7 +93,6 @@ Catalogue::Catalogue ( )
 #ifdef MAP
     cout << "Appel au constructeur de <Catalogue>" << endl;
 #endif
-    ChainList trajets;
 } //----- Fin de Catalogue
 
 

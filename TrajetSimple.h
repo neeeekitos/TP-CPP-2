@@ -35,7 +35,6 @@ public:
     char * GetDepart();
     char * GetDestination();
 
-
 //------------------------------------------------- Surcharge d'opérateurs
     //TrajetSimple & operator = ( const TrajetSimple & unTrajetSimple );
     // Mode d'emploi :

@@ -33,6 +33,8 @@ public:
     char * GetDestination();
     char * GetDepart();
     void Afficher();
+    void AjouterEscale(Trajet * tr);
+    bool RetirerEscale(Trajet * tr);
 
     // type Méthode ( liste des paramètres );
     // Mode d'emploi :

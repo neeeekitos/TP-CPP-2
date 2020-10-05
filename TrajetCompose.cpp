@@ -37,6 +37,17 @@ char * TrajetCompose::GetDestination()
     return trajetsSimples.GetDernierElement()->data->GetDestination();
 }
 
+void TrajetCompose::AjouterEscale(Trajet * tr)
+{
+    trajetsSimples.AjouterElement(tr);
+}
+
+bool TrajetCompose::RetirerEscale(Trajet * tr)
+{
+    return trajetsSimples.RetirerElement(tr);
+}
+
+
 
 // type TrajetCompose::Méthode ( liste des paramètres )
 // Algorithme :
@@ -64,7 +75,7 @@ TrajetCompose::TrajetCompose ( const TrajetCompose & unTrajetCompose )
 } //----- Fin de TrajetCompose (constructeur de copie)
 
 
-TrajetCompose::TrajetCompose ( ) : trajetsSimples()
+TrajetCompose::TrajetCompose ( )
 // Algorithme :
 //
 {
