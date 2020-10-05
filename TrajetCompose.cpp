@@ -22,6 +22,22 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
+void TrajetCompose::Afficher() 
+{
+    cout << "à redéfinir la méthode afficher du trajet composé" << endl;
+}
+
+char * TrajetCompose::GetDepart()
+{
+    return trajetsSimples.GetPremierElement()->data->GetDepart();
+}
+
+char * TrajetCompose::GetDestination()
+{
+    return trajetsSimples.GetDernierElement()->data->GetDestination();
+}
+
+
 // type TrajetCompose::Méthode ( liste des paramètres )
 // Algorithme :
 //
@@ -48,7 +64,7 @@ TrajetCompose::TrajetCompose ( const TrajetCompose & unTrajetCompose )
 } //----- Fin de TrajetCompose (constructeur de copie)
 
 
-TrajetCompose::TrajetCompose ( )
+TrajetCompose::TrajetCompose ( ) : trajetsSimples()
 // Algorithme :
 //
 {

@@ -39,6 +39,7 @@ public:
     ChainList * RechercherParcours(char * depart, char * destination);
     Element * GetSuivantElement(Element * elem);
     Element * GetPremierElement();
+    Element * GetDernierElement();
     bool RetirerElement(Trajet * tr);
     
 
