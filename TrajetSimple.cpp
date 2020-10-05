@@ -28,6 +28,7 @@ void TrajetSimple::Afficher()
     cout << "    Départ : " << depart << endl;
     cout << "    Destination : " << destination << endl;
     cout << "    Moyen de transport : " << moyenTransport << endl;
+    cout << endl; 
 }
 
 char * TrajetSimple::GetDestination()
@@ -63,6 +64,9 @@ TrajetSimple::~TrajetSimple ( )
 #ifdef MAP
     cout << "Appel au destructeur de <TrajetSimple>" << endl;
 #endif
+    delete[] depart;
+    delete[] destination;
+    delete[] moyenTransport;
 } //----- Fin de ~TrajetSimple
 
 
