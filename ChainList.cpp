@@ -7,7 +7,7 @@
                          : alison.lecuyer@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <ChainList> (fichier ChainList.cpp) ------------
+//---- Réalisation de la classe <ChainList> (fichier ChainList.cpp) ------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -18,8 +18,6 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "ChainList.h"
-
-//------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -111,25 +109,9 @@ bool ChainList::RetirerElement(Trajet * tr)
     return true;
 }
 
-// type ChainList::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-
-
-//------------------------------------------------- Surcharge d'opérateurs
-//ChainList & ChainList::operator = ( const ChainList & unChainList )
-// Algorithme :
-//
-//{
-//} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
 ChainList::ChainList ( const ChainList & unChainList )
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <ChainList>" << endl;
@@ -163,8 +145,3 @@ ChainList::~ChainList ( )
         queue = temp;
     }
 } //----- Fin de ~ChainList
-
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées

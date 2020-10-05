@@ -16,10 +16,6 @@
 #include "TrajetCompose.h"
 #include "TrajetSimple.h"
 
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
-
 //------------------------------------------------------------------------
 // Rôle de la classe <Catalogue>
 //
@@ -33,57 +29,52 @@ class Catalogue
 public:
 //----------------------------------------------------- Méthodes publiques
     void Rechercher(char * depart, char * destination);
+    // Mode d'emploi :
+    //
+
     void Afficher(ChainList * tr);
+    // Mode d'emploi :
+    //
+
     void Afficher();
+    // Mode d'emploi :
+    //
+
     void Ajouter(Trajet * tr);
+    // Mode d'emploi :
+    //
+
     TrajetSimple * CreerTrajetSimple(char * depart, char * destination, char * moyenTransport);
+    // Mode d'emploi :
+    //
+
     TrajetCompose * CreerTrajetCompose();
+    // Mode d'emploi :
+    //
+
     bool RetirerTrajet(Trajet * tr);
-
-    // type Méthode ( liste des paramètres );
     // Mode d'emploi :
     //
-    // Contrat :
-    //
-
-
-//------------------------------------------------- Surcharge d'opérateurs
-    //Catalogue & operator = ( const Catalogue & unCatalogue );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
 
 //-------------------------------------------- Constructeurs - destructeur
     Catalogue ( const Catalogue & unCatalogue );
     // Mode d'emploi (constructeur de copie) :
     //
-    // Contrat :
-    //
 
     Catalogue ( );
     // Mode d'emploi :
-    //
-    // Contrat :
     //
 
     virtual ~Catalogue ( );
     // Mode d'emploi :
     //
-    // Contrat :
-    //
 
 //------------------------------------------------------------------ PRIVE
 
 protected:
-//----------------------------------------------------- Méthodes protégées
-
 //----------------------------------------------------- Attributs protégés
     ChainList trajets;
 };
-
-//-------------------------------- Autres définitions dépendantes de <Catalogue>
 
 #endif // CATALOGUE_H
 

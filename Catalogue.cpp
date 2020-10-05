@@ -7,7 +7,7 @@
                          : alison.lecuyer@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Catalogue> (fichier Catalogue.cpp) ------------
+//---- Réalisation de la classe <Catalogue> (fichier Catalogue.cpp) ------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -18,8 +18,6 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Catalogue.h"
-
-//------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -71,25 +69,9 @@ bool Catalogue::RetirerTrajet(Trajet * tr)
 {
     return trajets.RetirerElement(tr);
 }
-// type Catalogue::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-
-
-//------------------------------------------------- Surcharge d'opérateurs
-//Catalogue & Catalogue::operator = ( const Catalogue & unCatalogue )
-// Algorithme :
-//
-//{
-//} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
 Catalogue::Catalogue ( const Catalogue & unCatalogue )
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Catalogue>" << endl;
@@ -106,15 +88,8 @@ Catalogue::Catalogue ( )
 
 
 Catalogue::~Catalogue ( )
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au destructeur de <Catalogue>" << endl;
 #endif
 } //----- Fin de ~Catalogue
-
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées

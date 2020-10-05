@@ -7,14 +7,12 @@
                          : alison.lecuyer@insa-lyon.fr
 *************************************************************************/
 
-//---------- Interface de la classe <ChainList> (fichier ChainList.h) ----------------
+//------ Interface de la classe <ChainList> (fichier ChainList.h) --------
 #if ! defined ( CHAINLIST_H )
 #define CHAINLIST_H
 
 //--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
-
-//------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 typedef struct Element
@@ -36,27 +34,34 @@ class ChainList
 
 public:
     void AjouterElement(Trajet * trajet);
+    // Mode d'emploi :
+    //
+
     Element * RechercherElement(Trajet * tr);
+    // Mode d'emploi :
+    //
+
     ChainList * RechercherParcours(char * depart, char * destination);
+    // Mode d'emploi :
+    //
+
     Element * GetSuivantElement(Element * elem);
+    // Mode d'emploi :
+    //
+
     Element * GetPremierElement();
+    // Mode d'emploi :
+    //
+
     Element * GetDernierElement();
+    // Mode d'emploi :
+    //
+
+    // Mode d'emploi :
+    //
+
     bool RetirerElement(Trajet * tr);
-    
-
-//----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
     // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-
-//------------------------------------------------- Surcharge d'opérateurs
-    //ChainList & operator = ( const ChainList & unChainList );
-    // Mode d'emploi :
-    //
-    // Contrat :
     //
 
 
@@ -64,31 +69,22 @@ public:
     ChainList ( const ChainList & unChainList );
     // Mode d'emploi (constructeur de copie) :
     //
-    // Contrat :
-    //
 
     ChainList ( );
     // Mode d'emploi :
-    //
-    // Contrat :
     //
 
     virtual ~ChainList ( );
     // Mode d'emploi :
     //
-    // Contrat :
-    //
 
 //------------------------------------------------------------------ PRIVE
 
 protected:
-//----------------------------------------------------- Méthodes protégées
-
 //----------------------------------------------------- Attributs protégés
     Element * tete, * queue;
 };
 
-//-------------------------------- Autres définitions dépendantes de <ChainList>
 
 #endif // CHAINLIST_H
 
