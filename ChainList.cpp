@@ -61,7 +61,7 @@ Element * ChainList::RechercherElement(Trajet * tr)
 {
     Element * trajet = GetPremierElement();
 
-    /* surcharger "=" dans Trajetcpp
+    /*
     strcmp(trajet->data->depart, depart) && !strcmp(trajet->data->destination, destination*/
     /*while (trajet != nullptr && *(trajet->data) != *tr)
     {
@@ -74,7 +74,8 @@ Element * ChainList::RechercherElement(Trajet * tr)
 ChainList * ChainList::RechercherParcours(char * depart, char * destination)
 {
     int trajetCmt = 0;
-    ChainList * resultat = new ChainList();
+    ChainList * resultat = new ChainList;
+
     Element * trajet = GetPremierElement();
 
     while (trajet != nullptr)
@@ -84,8 +85,7 @@ ChainList * ChainList::RechercherParcours(char * depart, char * destination)
             resultat->AjouterElement(trajet->data);
         }
         trajet = GetSuivantElement(trajet);
-    }
-
+    }    
     return resultat;
 }
 
@@ -152,15 +152,12 @@ ChainList::~ChainList ( )
 #ifdef MAP
     cout << "Appel au destructeur de <ChainList>" << endl;
 #endif
-    cout << "deallocation :::::::::::" << endl;
 
     Element * temp = queue;
 
     while (queue != nullptr)
     {
         temp = queue->precedent;
-        cout << "deallocation de " << endl;
-        queue->data->Afficher();
         delete queue->data;
         delete queue;
         queue = temp;

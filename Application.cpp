@@ -1,13 +1,12 @@
 /*************************************************************************
                            Application  -  description
                              -------------------
-    début                : 01/10/2020
-    copyright            : (C) 2020 par Terekhov Nikita et Lecuyer Alison
-    e-mail               : nikita.terekhov@insa-lyon.fr 
-                         : alison.lecuyer@insa-lyon.fr
+    début                : $DATE$
+    copyright            : (C) $ANNEE$ par $AUTEUR$
+    e-mail               : $EMAIL$
 *************************************************************************/
 
-//---- Réalisation du module <Application> (fichier Application.cpp) -----
+//---------- Réalisation du module <Application> (fichier Application.cpp) -------------
 
 /////////////////////////////////////////////////////////////////  INCLUDE
 //-------------------------------------------------------- Include système
@@ -17,13 +16,18 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Application.h"
+#include "Catalogue.h"
 #include "Trajet.h"
 #include "TrajetSimple.h"
 
 ///////////////////////////////////////////////////////////////////  PRIVE
+//---------------------------------------------------- Variables statiques
+
+static Catalogue catalogue; 
+
 //------------------------------------------------------ Fonctions privées
 
-static void  BouclePrincipale(Catalogue &catalogue) 
+static void  BouclePrincipale() 
 {
   bool doitContinuer = true;
 
@@ -33,7 +37,7 @@ static void  BouclePrincipale(Catalogue &catalogue)
     cout << endl; 
     cout << endl; 
     AfficherMenu();
-    doitContinuer = TraiterDemande(catalogue); 
+    doitContinuer = TraiterDemande(); 
   }
 }
 
@@ -57,20 +61,20 @@ static char ScannerChar()
   return test[0]; 
 }
 
-static int TraiterDemande(Catalogue &catalogue) 
+static int TraiterDemande() 
 {
   char optionChoisie = ScannerChar(); 
   switch (optionChoisie)
   {
     case '1':
-      AjouterTrajet(catalogue); 
+      AjouterTrajet(); 
       break;
     case '2':
       cout << "Trajets du catalogue : " << endl; 
       catalogue.Afficher();
       break;
     case '3':
-      RechercherTrajet(catalogue); 
+      RechercherTrajet(); 
       break;
     case '4':
       cout << "Au revoir !" << endl; 
@@ -82,28 +86,28 @@ static int TraiterDemande(Catalogue &catalogue)
   return 1;
 }
 
-static void AjouterTrajet(Catalogue &catalogue) 
+static void AjouterTrajet() 
 {
   cout << "Voulez-vous ajouter un trajet simple ou un trajet composé ? Entrez S pour simple ou C pour composé." << endl;
   char typeTrajet = ScannerChar(); 
   switch (typeTrajet)
   {
     case 'S':
-      AjouterTrajetSimple(catalogue);
+      AjouterTrajetSimple();
       break;
 
     case 'C':
-      AjouterTrajetCompose(catalogue);
+      AjouterTrajetCompose();
       break;
     
     default:
       cout << "Les seuls options possibles sont S ou C. " << endl; 
-      AjouterTrajet(catalogue); 
+      AjouterTrajet(); 
       break;
   }
 }
 
-static void AjouterTrajetSimple(Catalogue &catalogue) 
+static void AjouterTrajetSimple() 
 {
   char * depart = new char[150];
   char * destination = new char[150]; 
@@ -121,7 +125,7 @@ static void AjouterTrajetSimple(Catalogue &catalogue)
   catalogue.Ajouter(catalogue.CreerTrajetSimple(depart,destination,moyenTransport));
 }
 
-static void AjouterTrajetCompose(Catalogue &catalogue) 
+static void AjouterTrajetCompose() 
 {
   char continuer = 'O';
   int nbEscales = 0;
@@ -135,10 +139,10 @@ static void AjouterTrajetCompose(Catalogue &catalogue)
     cout << "Départ de l'escale numéro " << nbEscales + 1 << " : ";
     cin.getline(dep,150);
 
-    cout << "Destination de l'escale numéro " << nbEscales + 1 << " : ";
+    cout << "Destination de l'escale numéro : " << nbEscales + 1 << " : ";
     cin.getline(dest,150);
 
-    cout << "Moyen de transport de l'escale numéro " << nbEscales + 1 << " : ";
+    cout << "Moyen de transport de l'escale numéro : " << nbEscales + 1 << " : ";
     cin.getline(moyenTransport,150);
 
     dynamic_cast<TrajetCompose*>(pt_trajetCompose)->AjouterEscale(catalogue.CreerTrajetSimple(dep,dest,moyenTransport));
@@ -159,7 +163,7 @@ static void AjouterTrajetCompose(Catalogue &catalogue)
   }
 }
 
-static void RechercherTrajet(Catalogue &catalogue) 
+static void RechercherTrajet() 
 {
   char * depart = new char[150];
   char * destination = new char[150]; 
@@ -179,7 +183,6 @@ static void RechercherTrajet(Catalogue &catalogue)
 //---------------------------------------------------- Fonctions publiques
 int main() 
 {
-  Catalogue catalogue;
-  BouclePrincipale(catalogue);
+  BouclePrincipale();
   return 0; 
 }
