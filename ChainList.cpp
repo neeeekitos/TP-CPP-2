@@ -152,11 +152,15 @@ void ChainList::RetirerAll()
     }
 }
 
-/*void ChainList::InsererListe(ChainList * listeAInserer)
+void ChainList::InsererListe(ChainList * listeAInserer)
 {
     listeAInserer->GetPremierElement()->precedent = queue;
+
+    if (queue != nullptr) queue->suivant = listeAInserer->GetPremierElement();
+    else tete = listeAInserer->GetPremierElement();
     
-}*/
+    listeAInserer = nullptr;
+}
 
 
 //-------------------------------------------- Constructeurs - destructeur
