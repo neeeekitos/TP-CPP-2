@@ -82,7 +82,7 @@ public:
 protected:
 
 //----------------------------------------------------- Attributs protégés
-    ChainList trajetsSimples;
+    ChainList trajets;
 };
 
 

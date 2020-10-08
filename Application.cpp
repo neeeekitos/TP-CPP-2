@@ -171,7 +171,8 @@ static void RechercherTrajet(Catalogue &catalogue)
   cin.getline(destination,150);
 
   cout << "Vous pouvez prendre le(s) trajet(s) suivants : " << endl; 
-  catalogue.Rechercher(depart, destination);
+  /*catalogue.Rechercher(depart, destination);*/
+  catalogue.RechercheAvance(depart, destination);
 }
 
 

@@ -37,6 +37,10 @@ public:
     // Mode d'emploi :
     //
 
+    Element * RechercherElement(char * depart, char * destination);
+    // Mode d'emploi :
+    //
+
     Element * RechercherElement(Trajet * tr);
     // Mode d'emploi :
     //
@@ -57,6 +61,10 @@ public:
     // Mode d'emploi :
     //
 
+    ChainList * CopyList();
+    // Mode d'emploi :
+    //
+
     bool RetirerElement(Trajet * tr);
     // Mode d'emploi :
     //
@@ -65,8 +73,10 @@ public:
     // Mode d'emploi :
     //
 
+    int GetNbElements();
+
 //-------------------------------------------- Constructeurs - destructeur
-    ChainList ( const ChainList & unChainList );
+    ChainList ( const ChainList & unChainList ) = default;
     // Mode d'emploi (constructeur de copie) :
     //
 
@@ -83,6 +93,7 @@ public:
 protected:
 //----------------------------------------------------- Attributs protégés
     Element * tete, * queue;
+    int nbElements = 0;
 };
 
 

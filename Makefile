@@ -1,4 +1,6 @@
 #Makefile du TP1
+CFLAGS= -g -Wall -Wextra
+
 
 Application: Application.o Catalogue.o ChainList.o Trajet.o TrajetSimple.o TrajetCompose.o
 	@g++ -o Application Application.o Catalogue.o ChainList.o Trajet.o TrajetSimple.o TrajetCompose.o 

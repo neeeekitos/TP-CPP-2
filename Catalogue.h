@@ -16,6 +16,13 @@
 #include "TrajetCompose.h"
 #include "TrajetSimple.h"
 
+//------------------------------------------------------------------ Types
+typedef struct Bloc
+{
+    Trajet * blocData;
+    int valeur;
+} Bloc;
+
 //------------------------------------------------------------------------
 // Rôle de la classe <Catalogue>
 //
@@ -53,6 +60,14 @@ public:
     //
 
     bool RetirerTrajet(Trajet * tr);
+    // Mode d'emploi :
+    //  
+
+    void isPossible(Bloc ** caseTab, int ligne, int lignePreced, const char * destination, ChainList * trajetsPrecedents, int nbElem);
+    // Mode d'emploi :
+    //
+
+    void RechercheAvance(char * depart, char * destination);
     // Mode d'emploi :
     //
 

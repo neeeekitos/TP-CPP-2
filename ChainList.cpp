@@ -26,7 +26,9 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 void ChainList::AjouterElement(Trajet * trajet)
 {
-    Element * temp = new Element();
+    if (trajet == nullptr) return;
+
+    Element * temp = new Element;
     temp->data = trajet;
     temp->suivant = nullptr;
     temp->precedent = nullptr;
@@ -39,6 +41,12 @@ void ChainList::AjouterElement(Trajet * trajet)
         queue->suivant->precedent = queue;
         queue = temp;
     }
+    nbElements++;
+}
+
+int ChainList::GetNbElements()
+{
+    return nbElements;
 }
 
 Element * ChainList::GetSuivantElement(Element * elem)
@@ -56,19 +64,44 @@ Element * ChainList::GetDernierElement()
     return queue;
 }
 
+ChainList * ChainList::CopyList()
+{
+    cout << "beginning copy" << endl;
+    ChainList * newList = new ChainList;
+    Element * temp = new Element;
+    cout << "tete est" << tete << "tete" << endl;
+    temp = this->GetPremierElement();
+    if (temp == nullptr) return newList;
+    cout << temp << "data" << endl;
 
-Element * ChainList::RechercherElement(Trajet * tr)
+    newList->AjouterElement(temp->data);
+    cout << "while" << endl;
+    while ((temp = this->GetSuivantElement(temp)) != nullptr)
+        newList->AjouterElement(temp->data);
+
+    temp = nullptr;
+    return newList;
+}
+
+Element * ChainList::RechercherElement(char * depart, char * destination)
 {
     Element * trajet = GetPremierElement();
 
-    /*
-    strcmp(trajet->data->depart, depart) && !strcmp(trajet->data->destination, destination*/
-    /*while (trajet != nullptr && *(trajet->data) != *tr)
+    while (trajet != nullptr)
     {
+        if (!strcmp(trajet->data->GetDepart(), depart) && !strcmp(trajet->data->GetDestination(), destination))
+        {           
+            return trajet;
+        }
         trajet = GetSuivantElement(trajet);
-    }*/
+    }    
 
-    return trajet;
+    return nullptr;
+}
+
+Element * ChainList::RechercherElement(Trajet * tr)
+{
+    return RechercherElement(tr->GetDepart(), tr->GetDestination());
 }
 
 ChainList * ChainList::RechercherParcours(char * depart, char * destination)
@@ -125,12 +158,12 @@ void ChainList::RetirerAll()
 
 
 //-------------------------------------------- Constructeurs - destructeur
-ChainList::ChainList ( const ChainList & unChainList )
+/*ChainList::ChainList ( const ChainList & unChainList )
 {
 #ifdef MAP
     cout << "Appel au constructeur de copie de <ChainList>" << endl;
 #endif
-} //----- Fin de ChainList (constructeur de copie)
+} //----- Fin de ChainList (constructeur de copie)*/
 
 
 ChainList::ChainList ()

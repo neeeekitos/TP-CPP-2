@@ -27,7 +27,7 @@ void TrajetCompose::Afficher()
     cout << "    Départ du trajet composé : " << GetDepart() << endl; 
     cout << "    Destination du trajet composé : ";
     cout << GetDestination() << endl; 
-    Element * trajet = trajetsSimples.GetPremierElement();
+    Element * trajet = trajets.GetPremierElement();
     int nbEscales = 1; 
 
     while (trajet != nullptr)
@@ -42,27 +42,27 @@ void TrajetCompose::Afficher()
 
 char * TrajetCompose::GetDepart()
 {
-    return trajetsSimples.GetPremierElement()->data->GetDepart();
+    return trajets.GetPremierElement()->data->GetDepart();
 }
 
 char * TrajetCompose::GetDestination()
 {
-    return trajetsSimples.GetDernierElement()->data->GetDestination();
+    return trajets.GetDernierElement()->data->GetDestination();
 }
 
 void TrajetCompose::AjouterEscale(Trajet * tr)
 {
-    trajetsSimples.AjouterElement(tr);
+    trajets.AjouterElement(tr);
 }
 
 bool TrajetCompose::RetirerEscale(Trajet * tr)
 {
-    return trajetsSimples.RetirerElement(tr);
+    return trajets.RetirerElement(tr);
 }
 
 bool TrajetCompose::EstValide() 
 {
-    Element * trajet = trajetsSimples.GetPremierElement();
+    Element * trajet = trajets.GetPremierElement();
 
     while (trajet != nullptr)
     {
