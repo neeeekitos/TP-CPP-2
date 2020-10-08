@@ -79,8 +79,8 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
         }
     }
 
-    int nbDepRempli = 0;
-    int nbDestRempli = 0;
+    int lastDepRempli = 0;
+    int lastDestRempli = 0;
     bool destEstChange = false;
     bool depEstChange = false;
     int depIndex = 0;
@@ -93,17 +93,16 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
     if (!strcmp(temp->data->GetDepart(), depart)) ligneInit = depIndex;
     caseTab[0][2].valeur = 1;
     caseTab[0][2].blocData = temp->data;
-    nbDepRempli++;
-    nbDestRempli+=3;
+    lastDestRempli+=2;
     
     temp = trajets.GetSuivantElement(temp);
 
     while (temp != nullptr)
     {
         /* Rechercher si le meme depart / destination pour un autre trajet existe déjà*/
-        for (int i = 0; i < nbDepRempli; i++)
+        for (int i = 0; i < lastDepRempli; i++)
         {
-            for (int j = 1; j <= nbDestRempli; j++)
+            for (int j = 1; j < lastDestRempli; j++)
             {
                 if (caseTab[i][j].blocData != nullptr)
                 {
@@ -122,10 +121,16 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
             }
         }
 
-        depIndex = (depEstChange) ? depIndex : (nbDepRempli++);
-        destIndex = (destEstChange) ? destIndex : (nbDestRempli++);
+        if (!destEstChange && !depEstChange)
+        {
+            lastDepRempli++;
+            lastDestRempli++;
+            depIndex = lastDepRempli;
+            destIndex = lastDestRempli;
+        }
         caseTab[depIndex][destIndex].valeur = 1;
         caseTab[depIndex][destIndex].blocData = temp->data;
+        destEstChange = depEstChange = false;
 
         if (!strcmp(temp->data->GetDepart(), depart)) ligneInit = depIndex;
         temp = trajets.GetSuivantElement(temp);
@@ -159,14 +164,11 @@ void Catalogue::isPossible(Bloc ** caseTab, int ligne, const char * destination,
 {
     int nbColonnes = nbElem + 2;
     int nbLignes = nbElem;
-    ChainList * trjPreced = trajetsPrecedents->CopyList();
 
     /*tester si on a déjà parcouru cette ligne (i)*/ 
     if (ligne >= nbLignes || caseTab[ligne][0].valeur==1) 
     {
-        trjPreced->RetirerAll();
         trajetsPrecedents->RetirerAll();
-        delete trjPreced;
         delete trajetsPrecedents;
         return;
     }
@@ -182,11 +184,15 @@ void Catalogue::isPossible(Bloc ** caseTab, int ligne, const char * destination,
                 //trjPreced.AjouterElement(caseTab[ligne][j].blocData);
                 /*Afficher(&trjPreced);
                 while (get suivant existe dans trajetPreced)*/
+                ChainList * trjPreced = trajetsPrecedents->CopyList();
                 trjPreced->AjouterElement(caseTab[ligne][j].blocData);
                 Afficher(trjPreced);
+                trjPreced = nullptr;
             } else {
+                ChainList * trjPreced = trajetsPrecedents->CopyList();
                 trjPreced->AjouterElement(caseTab[ligne][j].blocData);
                 isPossible(caseTab, j-1, destination, trjPreced, nbElem);
+                trjPreced = nullptr;
             }
         }
     }   
