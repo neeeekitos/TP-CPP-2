@@ -185,7 +185,10 @@ void Catalogue::isPossible(Bloc ** caseTab, int ligne, const char * destination,
                 /*Afficher(&trjPreced);
                 while (get suivant existe dans trajetPreced)*/
                 ChainList * trjPreced = trajetsPrecedents->CopyList();
-                trjPreced->AjouterElement(caseTab[ligne][j].blocData);
+
+                ChainList * tr = trajets.RechercherParcours(caseTab[ligne][j].blocData->GetDepart(), caseTab[ligne][j].blocData->GetDestination());
+
+
                 Afficher(trjPreced);
                 trjPreced = nullptr;
             } else {

@@ -73,6 +73,10 @@ public:
     // Mode d'emploi :
     //
 
+    void InsererListe(ChainList * listeAInserer);
+    // Mode d'emploi :
+    //
+
     int GetNbElements();
 
 //-------------------------------------------- Constructeurs - destructeur
