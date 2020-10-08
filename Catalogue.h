@@ -63,7 +63,7 @@ public:
     // Mode d'emploi :
     //  
 
-    void isPossible(Bloc ** caseTab, int ligne, int lignePreced, const char * destination, ChainList * trajetsPrecedents, int nbElem);
+    void isPossible(Bloc ** caseTab, int ligne, const char * destination, ChainList * trajetsPrecedents, int nbElem);
     // Mode d'emploi :
     //
 

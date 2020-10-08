@@ -66,16 +66,12 @@ Element * ChainList::GetDernierElement()
 
 ChainList * ChainList::CopyList()
 {
-    cout << "beginning copy" << endl;
     ChainList * newList = new ChainList;
     Element * temp = new Element;
-    cout << "tete est" << tete << "tete" << endl;
     temp = this->GetPremierElement();
     if (temp == nullptr) return newList;
-    cout << temp << "data" << endl;
 
     newList->AjouterElement(temp->data);
-    cout << "while" << endl;
     while ((temp = this->GetSuivantElement(temp)) != nullptr)
         newList->AjouterElement(temp->data);
 

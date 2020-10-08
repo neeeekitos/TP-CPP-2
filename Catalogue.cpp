@@ -90,7 +90,6 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
 
     /*ajout du premier element*/
     Element * temp = trajets.GetPremierElement();
-    cout << "getting first element" << endl;
     if (!strcmp(temp->data->GetDepart(), depart)) ligneInit = depIndex;
     caseTab[0][2].valeur = 1;
     caseTab[0][2].blocData = temp->data;
@@ -98,8 +97,6 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
     nbDestRempli+=3;
     
     temp = trajets.GetSuivantElement(temp);
-
-    cout << "remplissage du tableau : " << endl;
 
     while (temp != nullptr)
     {
@@ -112,17 +109,14 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
                 {
                     if (!strcmp(caseTab[i][j].blocData->GetDepart(), temp->data->GetDepart()))
                     {
-                        cout << caseTab[i][j].blocData->GetDepart() << endl;
                         depEstChange = true;
                         depIndex = i;
-                        cout << " dep index changé, sa valeur est " << i << "   " << j << endl;
                     }
 
                     if (!strcmp(caseTab[i][j].blocData->GetDestination(), temp->data->GetDestination()))
                     {
                         destEstChange = true;
                         destIndex = j;
-                        cout << " dest index changé, sa valeur est "  << i << "   " << j << endl;
                     }
                 }
             }
@@ -152,9 +146,7 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
         cout << endl;
     }
 
-    isPossible(caseTab, ligneInit, colonneInit, destination, trajetsPrecedents, nbElem);
-
-    cout << "isPossible a fini" << endl;
+    isPossible(caseTab, ligneInit, destination, trajetsPrecedents, nbElem);
 
     for(int i = 0; i < nbLignes; i++)
         delete[] caseTab[i];
@@ -163,19 +155,15 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
     delete[] destination;
 }
 
-void Catalogue::isPossible(Bloc ** caseTab, int ligne, int lignePreced, const char * destination, ChainList * trajetsPrecedents, int nbElem)
+void Catalogue::isPossible(Bloc ** caseTab, int ligne, const char * destination, ChainList * trajetsPrecedents, int nbElem)
 {
     int nbColonnes = nbElem + 2;
     int nbLignes = nbElem;
     ChainList * trjPreced = trajetsPrecedents->CopyList();
-    cout << "copy success" << endl;
-    
-    cout << "nbLignes " << nbLignes << " , ligne " << ligne << endl;
 
     /*tester si on a déjà parcouru cette ligne (i)*/ 
     if (ligne >= nbLignes || caseTab[ligne][0].valeur==1) 
     {
-        cout << " in if"<< endl;
         trjPreced->RetirerAll();
         trajetsPrecedents->RetirerAll();
         delete trjPreced;
@@ -184,25 +172,11 @@ void Catalogue::isPossible(Bloc ** caseTab, int ligne, int lignePreced, const ch
     }
     else caseTab[ligne][0].valeur = 1;
 
-    /* au premier appel on n'a pas de trajets précedents dans ChainList 
-    if (lignePreced != -1 && caseTab[lignePreced][ligne].valeur != 0)
-    {
-        trjPreced->AjouterElement((caseTab[lignePreced][ligne]).blocData);
-        Afficher(trjPreced);
-    }*/
-
-    cout <<  " lignePreced = " << lignePreced << endl;
-
-        cout << "la ligne est " << ligne << endl;
-        cout << "nbColonnes est " << nbColonnes << endl;
 
     for (int j = 1; j < nbColonnes; j++)
     {
         if (caseTab[ligne][j].valeur == 1)
         {
-            cout << "destination check " << caseTab[ligne][j].blocData->GetDestination() << destination << endl; 
-            cout << "j-1 ou ligne future est " << j-1 << endl;
-            cout << "ligne " << ligne << "    | j " << j << endl;
             if (!strcmp(caseTab[ligne][j].blocData->GetDestination(), destination))
             {
                 //trjPreced.AjouterElement(caseTab[ligne][j].blocData);
@@ -211,12 +185,8 @@ void Catalogue::isPossible(Bloc ** caseTab, int ligne, int lignePreced, const ch
                 trjPreced->AjouterElement(caseTab[ligne][j].blocData);
                 Afficher(trjPreced);
             } else {
-                cout << "im in" << endl;
-                                trjPreced->AjouterElement(caseTab[ligne][j].blocData);
-
-                /*ligne sera j-1, car le tableau a une colonne supplémentaire en j = 0*/
-                //segmentation fault ici : Afficher(&trjPreced);
-                isPossible(caseTab, j-1, ligne, destination, trjPreced, nbElem);
+                trjPreced->AjouterElement(caseTab[ligne][j].blocData);
+                isPossible(caseTab, j-1, destination, trjPreced, nbElem);
             }
         }
     }   
