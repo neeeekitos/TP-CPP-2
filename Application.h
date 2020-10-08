@@ -65,4 +65,11 @@ static void RechercherTrajet(Catalogue &catalogue);
   // Récupère le départ et la destination, 
   // puis appelle la méthode RechercherTrajet du catalogue 
 
+static void RechercherTrajetAvance(Catalogue &catalogue);
+  // Mode d'emploi
+  // Méthode appelée lorsque l'utilisateur souhaite rechercher un trajet.
+  // Récupère le départ et la destination, 
+  // puis appelle la méthode RechercheAvance du catalogue 
+  // Utilisation d'un algorithme plus poussé que la méthode RechercherTrajet. 
+
 #endif // Application_H

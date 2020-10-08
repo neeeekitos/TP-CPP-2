@@ -44,7 +44,8 @@ static void AfficherMenu()
   cout << "1 - Ajouter un trajet au catalogue." << endl;
   cout << "2 - Afficher le catalogue." << endl;
   cout << "3 - Rechercher un trajet." << endl;
-  cout << "4 - Quitter." << endl; 
+  cout << "4 - Rechercher un trajet (algorithme avancé)." << endl;
+  cout << "5 - Quitter." << endl; 
   cout << "Veuillez entrer le numéro de l'action que vous souhaitez réaliser :" << endl; 
   cout << "-------------------------------------------------------------------------" << endl; 
 
@@ -73,10 +74,13 @@ static int TraiterDemande(Catalogue &catalogue)
       RechercherTrajet(catalogue); 
       break;
     case '4':
+      RechercherTrajetAvance(catalogue);
+      break;
+    case '5' :
       cout << "Au revoir !" << endl; 
       return 0;
     default:
-      cout << "Action impossible. Veuillez choisir un numéro entre 1 et 4." << endl;
+      cout << "Action impossible. Veuillez choisir un numéro entre 1 et 5." << endl;
   }
 
   return 1;
@@ -84,7 +88,7 @@ static int TraiterDemande(Catalogue &catalogue)
 
 static void AjouterTrajet(Catalogue &catalogue) 
 {
-  cout << "Voulez-vous ajouter un trajet simple ou un trajet composé ? Entrez S pour simple ou C pour composé." << endl;
+  cout << "Voulez-vous ajouter un trajet simple ou un trajet composé ? Entrez S pour simple ou C pour composé. Pour retourner au menu, tapez M." << endl;
   char typeTrajet = ScannerChar(); 
   switch (typeTrajet)
   {
@@ -95,9 +99,12 @@ static void AjouterTrajet(Catalogue &catalogue)
     case 'C':
       AjouterTrajetCompose(catalogue);
       break;
+
+    case 'M' : 
+      break; 
     
     default:
-      cout << "Les seuls options possibles sont S ou C. " << endl; 
+      cout << "Les seuls options possibles sont S, C ou M. " << endl; 
       AjouterTrajet(catalogue); 
       break;
   }
@@ -171,7 +178,21 @@ static void RechercherTrajet(Catalogue &catalogue)
   cin.getline(destination,150);
 
   cout << "Vous pouvez prendre le(s) trajet(s) suivants : " << endl; 
-  /*catalogue.Rechercher(depart, destination);*/
+  catalogue.Rechercher(depart, destination);
+}
+
+static void RechercherTrajetAvance(Catalogue &catalogue) 
+{
+  char * depart = new char[150];
+  char * destination = new char[150]; 
+
+  cout << "D'où voulez-vous partir ?" << endl; 
+  cin.getline(depart,150);
+
+  cout << "Où voulez-vous aller ?" << endl; 
+  cin.getline(destination,150);
+
+  cout << "Vous pouvez prendre le(s) trajet(s) suivants : " << endl; 
   catalogue.RechercheAvance(depart, destination);
 }
 
