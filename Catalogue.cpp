@@ -109,22 +109,16 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
                 cout << " i et j :" << i << j <<endl;
                 if (caseTab[i][j].blocData != nullptr)
                 {
-                                    cout << "depart est " <<  caseTab[i][j].blocData->GetDepart() << endl;
-
                     if (!strcmp(caseTab[i][j].blocData->GetDepart(), temp->data->GetDepart()))
                     {
                         depExiste = true;
                         depIndex = i;
-                        cout << "depIndex est " << i <<endl;
-
                     }
-                                    cout << "dest  est " << caseTab[i][j].blocData->GetDestination() << endl;
 
                     if (!strcmp(caseTab[i][j].blocData->GetDestination(), temp->data->GetDestination()))
                     {
                         destExiste = true;
                         destIndex = j;
-                        cout << "destIndex est " << i <<endl;
                     }
 
                     if (!strcmp(caseTab[i][j].blocData->GetDestination(), temp->data->GetDepart()))
@@ -160,15 +154,10 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
             lastDestRempli++;
             destIndex = lastDestRempli;
         }
-     
 
-         cout << "depIndex " << depIndex << endl;
-            cout << "destIndex " << destIndex << endl;
         caseTab[depIndex][destIndex].valeur = 1;
         caseTab[depIndex][destIndex].blocData = temp->data;
         destExiste = depExiste = false;
-
-        cout << "next" << endl;
 
         if (!strcmp(temp->data->GetDepart(), depart)) ligneInit = depIndex;
         temp = trajets.GetSuivantElement(temp);
@@ -218,9 +207,6 @@ void Catalogue::isPossible(Bloc ** caseTab, int ligne, const char * destination,
         {
             if (!strcmp(caseTab[ligne][j].blocData->GetDestination(), destination))
             {
-                //trjPreced.AjouterElement(caseTab[ligne][j].blocData);
-                /*Afficher(&trjPreced);
-                while (get suivant existe dans trajetPreced)*/
                 ChainList * trjPreced = trajetsPrecedents->CopyList();
                 ChainList * tr = trajets.RechercherParcours(caseTab[ligne][j].blocData->GetDepart(), caseTab[ligne][j].blocData->GetDestination());
                 trjPreced->InsererListe(tr);
