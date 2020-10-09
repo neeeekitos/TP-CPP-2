@@ -175,7 +175,7 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
         return;
     }
 
-    //Affichage du tableau caseTab
+    /*//Affichage du tableau caseTab
     for (int i = 0; i < nbLignes; i++)
     {
         for (int j = 0; j < nbColonnes; j++)
@@ -183,7 +183,7 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
             cout << caseTab[i][j].valeur << "  ";
         }
         cout << endl;
-    }
+    }*/
 
     isPossible(caseTab, ligneInit, destination, trajetsPrecedents, nbDepEtDest);
     for(int i = 0; i < nbLignes; i++)
