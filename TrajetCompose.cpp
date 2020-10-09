@@ -25,8 +25,7 @@ using namespace std;
 void TrajetCompose::Afficher() 
 {
     cout << "    Départ du trajet composé : " << GetDepart() << endl; 
-    cout << "    Destination du trajet composé : ";
-    cout << GetDestination() << endl; 
+    cout << "    Destination du trajet composé : " << GetDestination() << endl;
     Element * trajet = trajets.GetPremierElement();
     int nbEscales = 1; 
 
@@ -71,10 +70,7 @@ bool TrajetCompose::EstValide()
 
     while (trajet != nullptr)
     {
-        if(trajet->suivant != nullptr && 
-        strcmp(
-            trajet->data->GetDestination(),
-            trajet->suivant->data->GetDepart())) {
+        if(trajet->suivant != nullptr && strcmp(trajet->data->GetDestination(),trajet->suivant->data->GetDepart())) {
             return false; 
         }
         trajet = trajet->suivant;
@@ -84,16 +80,19 @@ bool TrajetCompose::EstValide()
 
 bool TrajetCompose::EstEgal(Trajet * t) 
 {
+    // Si on compare bel et bien un trajet composé avec un trajet composé 
     if (dynamic_cast<TrajetCompose*>(t) != nullptr) {
+        // Si les deux trajets ont le même nombre d'escale 
         if(dynamic_cast<TrajetCompose*>(t)->GetTrajets()->GetNbElements()!=trajets.GetNbElements()) {
             return false; 
         }
 
-
+        // On parcourt les escales des deux trajets en même temps 
         Element * trajet = trajets.GetPremierElement();
         Element * trajetBis = dynamic_cast<TrajetCompose*>(t)->GetTrajets()->GetPremierElement(); 
 
         while(trajet != nullptr) {
+            // Si chaque escale est la même 
             if(!trajet->data->EstEgal(trajetBis->data)) {
                 return false; 
             }

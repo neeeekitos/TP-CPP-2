@@ -96,4 +96,3 @@ protected:
 
 
 #endif // TRAJETCOMPOSE_H
-

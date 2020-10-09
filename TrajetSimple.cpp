@@ -47,7 +47,9 @@ char * TrajetSimple::GetMoyenTransport()
 
 bool TrajetSimple::EstEgal(Trajet * t) 
 {
+    // Si on compare bel et bien un trajet simple avec un trajet simple 
     if (dynamic_cast<TrajetSimple*>(t) != nullptr) {
+        // Si les deux trajets ont le même départ, la même destination et le même moyen de transport 
         if(strcmp(depart,t->GetDepart())==0 && strcmp(destination,t->GetDestination())==0 && strcmp(moyenTransport,dynamic_cast<TrajetSimple*>(t)->GetMoyenTransport())==0)  
             return true; 
     } 
