@@ -68,6 +68,8 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
     TrajetCompose ( const TrajetCompose & unTrajetCompose ) = default;
+    // Mode d'emploi :
+    // Constructeur de copy par défaut de TrajetCompose. 
 
     TrajetCompose ( );
     // Mode d'emploi :
