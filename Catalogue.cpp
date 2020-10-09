@@ -106,8 +106,6 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
         {
             for (int j = 1; j <= lastDestRempli; j++)
             {
-                 cout << temp->data->GetDepart() << endl;
-                cout << " i et j :" << i << j <<endl;
                 if (caseTab[i][j].blocData != nullptr)
                 {
                     if (!strcmp(caseTab[i][j].blocData->GetDepart(), temp->data->GetDepart()))
@@ -176,6 +174,8 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
         delete[] destination;
         return;
     }
+
+    //Affichage du tableau caseTab
     for (int i = 0; i < nbLignes; i++)
     {
         for (int j = 0; j < nbColonnes; j++)
@@ -186,7 +186,6 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
     }
 
     isPossible(caseTab, ligneInit, destination, trajetsPrecedents, nbDepEtDest);
-        cout << "delete begins" << endl;
     for(int i = 0; i < nbLignes; i++)
         delete[] caseTab[i];
     delete[] caseTab;
@@ -229,13 +228,12 @@ void Catalogue::isPossible(Bloc ** caseTab, int ligne, const char * destination,
                 ChainList * trjPreced = trajetsPrecedents->CopyList();
                 ChainList * tr = trajets.RechercherParcours(caseTab[ligne][j].blocData->GetDepart(), caseTab[ligne][j].blocData->GetDestination());
                 trjPreced->InsererListe(tr);
-                isPossible(caseTab, j-1, destination, trjPreced, nbDepEtDest);
-                cout << " appel retirer all de tr" << endl;
-                tr->RetirerAll();
-                                cout << " appel retirer all de trjpreceden" << endl;
 
-                trjPreced->RetirerAll();
+                isPossible(caseTab, j-1, destination, trjPreced, nbDepEtDest);
+
+                tr->RetirerAll();
                 delete tr;
+                trjPreced->RetirerAll();
                 delete trjPreced;
             }
         }

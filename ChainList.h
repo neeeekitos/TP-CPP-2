@@ -34,59 +34,114 @@ class ChainList
 
 public:
     void AjouterElement(Trajet * trajet);
-    // Mode d'emploi :
-    //
+    /**
+     * Ajoute un trajet passé en paramètre dans une liste chainée
+     *  
+     * @param trajet de Trajet, le trajet à ajouter.
+     */
 
     Element * RechercherElement(char * depart, char * destination);
-    // Mode d'emploi :
-    //
+    /**
+     * Recherche une structure Element avec un Trajet
+     * correspondant au depart et à la destination
+     * passés en paramètre.
+     *  
+     * @param depart depart du trajet.
+     * @param destination l'arriveé du trajet.
+     * @return Element avec un attribut data contenant le trajet
+     */
 
     Element * RechercherElement(Trajet * tr);
-    // Mode d'emploi :
-    //
+    /**
+     * Recherche une structure Element avec un Trajet
+     * correspondant à un trajet passé en paramètre. 
+     * Cette méthode compare le départ et la destination 
+     * du trajet.
+     *  
+     * @param tr Instance du type Trajet
+     * @return Element avec un attribut data contenant le trajet
+     */
 
     ChainList * RechercherParcours(char * depart, char * destination);
-    // Mode d'emploi :
-    //
+    /**
+     * Recherche et retourne une liste de trajets qui ont le départ 
+     * et la destination corresponants à ceux passés dans les 
+     * paramètres.
+     *  
+     * @param depart depart du trajet.
+     * @param destination l'arriveé du trajet.
+     * @return liste chainée du type ChainList avec les trajets recherchés.
+     */
 
     Element * GetSuivantElement(Element * elem);
-    // Mode d'emploi :
-    //
+    /**
+     * Retourne un élement suivant dans la liste après 
+     * celui passé dans le paramètre.
+     *  
+     * @param elem Instance du Type Element contenant un trajet.
+     * @return Element suivant avec un attribut data contenant le trajet.
+     */
 
     Element * GetPremierElement();
-    // Mode d'emploi :
-    //
+    /**
+     * Retourne un premier élement de la liste.
+     *  
+     * @return un premier élement de la liste du type Element.
+     */
 
     Element * GetDernierElement();
-    // Mode d'emploi :
-    //
+    /**
+     * Retourne un premier élement de la liste.
+     *  
+     * @return un premier élement de la liste du type Element.
+    */
 
     ChainList * CopyList();
-    // Mode d'emploi :
-    //
+    /**
+     * Fait une copie en surface de la liste qui invoque la méthode.
+     * Tous les élements d"un nouvelle liste pointent sur les élements
+     * de l'ancienne, donc avant de l'effacer il faut appeler une méthode 
+     * RetirerAll(), afin de ne pas effacer les élements de la liste de base.
+     *  
+     * @return une liste chainée du type ChainList
+    */
 
     bool RetirerElement(Trajet * tr);
-    // Mode d'emploi :
-    //
+    /**
+     * Retire un struct Element dont l'attribut data contenant
+     * un trajet correspond à un trajet passé en paramètre
+     * (si le départ et destination sont égaux).
+     *  
+     * @param tr Instance du type Trajet à retirer de la liste
+     * @return bool , true si un élement à été trouvé et retiré, false sinon.
+    */
 
     void RetirerAll();
-    // Mode d'emploi :
-    //
+    /**
+     * Retire tous les élements de la liste, sans les détruire.
+    */
 
     void InsererListe(ChainList * listeAInserer);
-    // Mode d'emploi :
-    //
+    /**
+     * Insère une liste dans celle qui appelle la méthode.
+     *  
+     * @param listeAInserer liste à insérer.
+    */
+   
 
     int GetNbElements();
+    /**
+     * Retoune le nombre d'éléments dans la liste.
+     * @return le nombre d'éléments.
+    */
+   
 
 //-------------------------------------------- Constructeurs - destructeur
     ChainList ( );
-    // Mode d'emploi :
-    //
+    // Constructeur de TrajetCompose. 
 
     virtual ~ChainList ( );
-    // Mode d'emploi :
-    //
+    // Destructeur de TrajetCompose. 
 
 //------------------------------------------------------------------ PRIVE
 

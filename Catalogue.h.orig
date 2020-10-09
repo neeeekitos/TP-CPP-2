@@ -117,7 +117,7 @@ public:
      */
 
     void RechercheAvance(char * depart, char * destination);
-
+<<<<<<< HEAD
     /**
      * Recherche un itinéraire qui peut contenir plusieurs trajets
      * simples et complexes avec le depart et la destination correspondants à
@@ -126,12 +126,15 @@ public:
      * @param depart depart du trajet.
      * @param destination l'arriveé du trajet.
      */
-
+=======
+    // Mode d'emploi :
+    //
 
     bool ContientTrajet(Trajet * t);
     // Mode d'emploi : 
     // 
 
+>>>>>>> master
 //-------------------------------------------- Constructeurs - destructeur
     Catalogue ( const Catalogue & unCatalogue );
     // Constructeur de copie par défaut de TrajetCompose. 

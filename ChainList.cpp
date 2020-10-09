@@ -142,11 +142,10 @@ bool ChainList::RetirerElement(Trajet * tr)
 void ChainList::RetirerAll()
 {
     Element * temp = queue;
-        cout << "temp = queue un retirer all" << endl;
     while (queue != nullptr)
     {
         temp = queue->precedent;
-        delete queue;
+        //delete queue;
         queue = temp;
     }
 }
