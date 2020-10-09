@@ -1,10 +1,12 @@
 /*************************************************************************
                            Application  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $ANNEE$ par $AUTEUR$
-    e-mail               : $EMAIL$
+    début                : 01/10/2020
+    copyright            : (C) 2020 par Terekhov Nikita et Lecuyer Alison
+    e-mail               : nikita.terekhov@insa-lyon.fr 
+                         : alison.lecuyer@insa-lyon.fr
 *************************************************************************/
+
 
 //------ Interface du module <Application> (fichier Application.h) --------
 #if ! defined ( APPLICATION_H )
