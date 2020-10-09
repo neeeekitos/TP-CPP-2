@@ -26,7 +26,6 @@ using namespace std;
 static void  BouclePrincipale(Catalogue &catalogue) 
 {
   bool doitContinuer = true;
-
   while(doitContinuer)
   {
     cout << endl; 

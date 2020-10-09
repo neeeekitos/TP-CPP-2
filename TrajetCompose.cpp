@@ -18,7 +18,6 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "TrajetCompose.h"
-#include "TrajetSimple.h"
 
 //----------------------------------------------------------------- PUBLIC
 

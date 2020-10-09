@@ -13,7 +13,7 @@
 //------------------------------------------------------------------------
 // Rôle du module <Application>
 // Le module <Application> permet d'intéragir avec l'utilisateur et 
-// les différentes classes de l'application. 
+// les différentes classes de l'application, notamment avec le catalogue. 
 //------------------------------------------------------------------------
 
 
@@ -23,6 +23,11 @@
 //////////////////////////////////////////////////////////////////  PUBLIC
 //---------------------------------------------------- Fonctions publiques
 static void  BouclePrincipale(Catalogue &catalogue);
+  // Mode d'emploi :
+  // C'est la méthode qui est appelée lors du démarage de l'application.
+  // Elle affiche le menu, appelle la méthode TraiterDemande et en 
+  // en fonction de ce qu'à retourner cette méthode, elle affiche 
+  // à nouveau le menu et rappelle la méthode ou bien quitte l'application.
 
 static void AfficherMenu();
   // Mode d'emploi : 
