@@ -27,7 +27,7 @@ void Catalogue::Afficher(ChainList * tr)
     if (tr == nullptr) return; 
     Element * trajet = tr->GetPremierElement();
 
-    if (trajet == nullptr && trajet->data == nullptr) cout << "Aucun trajet" << endl;
+    if (trajet == nullptr || trajet->data == nullptr) cout << "Aucun trajet" << endl;
     else {
         while (trajet != nullptr)
         {
@@ -64,9 +64,9 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
     }
     
     ChainList * trajetsPrecedents = new ChainList;
-    int nbElem = trajets.GetNbElements();
-    int nbLignes = nbElem;
-    int nbColonnes = nbLignes + 2;
+    int nbDepEtDest = 2*trajets.GetNbElements();
+    int nbLignes = nbDepEtDest;
+    int nbColonnes = nbLignes + 1;
 
     Bloc ** caseTab = new Bloc*[nbLignes];
     int colCount = 10;
@@ -76,13 +76,14 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
         for (int j = 0; j < nbColonnes; j++)
         {
             caseTab[i][j].valeur = 0;
+            caseTab[i][j].blocData = nullptr;
         }
     }
 
     int lastDepRempli = 0;
     int lastDestRempli = 0;
-    bool destEstChange = false;
-    bool depEstChange = false;
+    bool destExiste = false;
+    bool depExiste = false;
     int depIndex = 0;
     int destIndex = 0;
     int ligneInit = -1;
@@ -93,6 +94,7 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
     if (!strcmp(temp->data->GetDepart(), depart)) ligneInit = depIndex;
     caseTab[0][2].valeur = 1;
     caseTab[0][2].blocData = temp->data;
+    lastDepRempli++;
     lastDestRempli+=2;
     
     temp = trajets.GetSuivantElement(temp);
@@ -100,37 +102,63 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
     while (temp != nullptr)
     {
         /* Rechercher si le meme depart / destination pour un autre trajet existe déjà*/
-        for (int i = 0; i < lastDepRempli; i++)
+        for (int i = 0; i <= lastDepRempli; i++)
         {
-            for (int j = 1; j < lastDestRempli; j++)
+            for (int j = 1; j <= lastDestRempli; j++)
             {
+                 cout << temp->data->GetDepart() << endl;
+                cout << " i et j :" << i << j <<endl;
                 if (caseTab[i][j].blocData != nullptr)
                 {
                     if (!strcmp(caseTab[i][j].blocData->GetDepart(), temp->data->GetDepart()))
                     {
-                        depEstChange = true;
+                        depExiste = true;
                         depIndex = i;
                     }
 
                     if (!strcmp(caseTab[i][j].blocData->GetDestination(), temp->data->GetDestination()))
                     {
-                        destEstChange = true;
+                        destExiste = true;
                         destIndex = j;
+                    }
+
+                    if (!strcmp(caseTab[i][j].blocData->GetDestination(), temp->data->GetDepart()))
+                    {
+                        depExiste = true;
+                        depIndex = j-1;
+                    }
+
+                    if (!strcmp(caseTab[i][j].blocData->GetDepart(), temp->data->GetDestination()))
+                    {
+                        destExiste = true;
+                        destIndex = i+1;
                     }
                 }
             }
         }
 
-        if (!destEstChange && !depEstChange)
+        if (!depExiste && !depExiste)
+        {
+            lastDestRempli+=2;
+            lastDepRempli++;
+            depIndex = lastDepRempli;
+            destIndex = lastDestRempli;
+            lastDepRempli++;
+        } else if (!depExiste && destExiste)
         {
             lastDepRempli++;
             lastDestRempli++;
             depIndex = lastDepRempli;
+        } else if (depExiste && !destExiste)
+        {
+            lastDepRempli++;
+            lastDestRempli++;
             destIndex = lastDestRempli;
         }
+
         caseTab[depIndex][destIndex].valeur = 1;
         caseTab[depIndex][destIndex].blocData = temp->data;
-        destEstChange = depEstChange = false;
+        destExiste = depExiste = false;
 
         if (!strcmp(temp->data->GetDepart(), depart)) ligneInit = depIndex;
         temp = trajets.GetSuivantElement(temp);
@@ -139,9 +167,15 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
     if (ligneInit == -1) 
     {
         cout << "Pas de trajets disponibles" << endl;
+        for(int i = 0; i < nbLignes; i++)
+            delete[] caseTab[i];
+        delete[] caseTab;
+        delete temp;
+        delete trajetsPrecedents;
+        delete[] depart;
+        delete[] destination;
         return;
     }
-
     for (int i = 0; i < nbLignes; i++)
     {
         for (int j = 0; j < nbColonnes; j++)
@@ -151,19 +185,21 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
         cout << endl;
     }
 
-    isPossible(caseTab, ligneInit, destination, trajetsPrecedents, nbElem);
-
+    isPossible(caseTab, ligneInit, destination, trajetsPrecedents, nbDepEtDest);
+        cout << "delete begins" << endl;
     for(int i = 0; i < nbLignes; i++)
         delete[] caseTab[i];
     delete[] caseTab;
+    delete temp;
+    delete trajetsPrecedents;
     delete[] depart;
     delete[] destination;
 }
 
-void Catalogue::isPossible(Bloc ** caseTab, int ligne, const char * destination, ChainList * trajetsPrecedents, int nbElem)
+void Catalogue::isPossible(Bloc ** caseTab, int ligne, const char * destination, ChainList * trajetsPrecedents, int nbDepEtDest)
 {
-    int nbColonnes = nbElem + 2;
-    int nbLignes = nbElem;
+    int nbColonnes = nbDepEtDest + 1;
+    int nbLignes = nbDepEtDest;
 
     /*tester si on a déjà parcouru cette ligne (i)*/ 
     if (ligne >= nbLignes || caseTab[ligne][0].valeur==1) 
@@ -181,24 +217,29 @@ void Catalogue::isPossible(Bloc ** caseTab, int ligne, const char * destination,
         {
             if (!strcmp(caseTab[ligne][j].blocData->GetDestination(), destination))
             {
-                //trjPreced.AjouterElement(caseTab[ligne][j].blocData);
-                /*Afficher(&trjPreced);
-                while (get suivant existe dans trajetPreced)*/
                 ChainList * trjPreced = trajetsPrecedents->CopyList();
-
                 ChainList * tr = trajets.RechercherParcours(caseTab[ligne][j].blocData->GetDepart(), caseTab[ligne][j].blocData->GetDestination());
-
-
+                trjPreced->InsererListe(tr);
                 Afficher(trjPreced);
-                trjPreced = nullptr;
+                tr->RetirerAll();
+                trjPreced->RetirerAll();
+                delete tr;
+                delete trjPreced;
             } else {
                 ChainList * trjPreced = trajetsPrecedents->CopyList();
-                trjPreced->AjouterElement(caseTab[ligne][j].blocData);
-                isPossible(caseTab, j-1, destination, trjPreced, nbElem);
-                trjPreced = nullptr;
+                ChainList * tr = trajets.RechercherParcours(caseTab[ligne][j].blocData->GetDepart(), caseTab[ligne][j].blocData->GetDestination());
+                trjPreced->InsererListe(tr);
+                isPossible(caseTab, j-1, destination, trjPreced, nbDepEtDest);
+                cout << " appel retirer all de tr" << endl;
+                tr->RetirerAll();
+                                cout << " appel retirer all de trjpreceden" << endl;
+
+                trjPreced->RetirerAll();
+                delete tr;
+                delete trjPreced;
             }
         }
-    }   
+    }
 }
 
 void Catalogue::Ajouter(Trajet * tr)

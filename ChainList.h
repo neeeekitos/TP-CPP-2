@@ -80,10 +80,6 @@ public:
     int GetNbElements();
 
 //-------------------------------------------- Constructeurs - destructeur
-    ChainList ( const ChainList & unChainList ) = default;
-    // Mode d'emploi (constructeur de copie) :
-    //
-
     ChainList ( );
     // Mode d'emploi :
     //

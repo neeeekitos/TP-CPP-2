@@ -65,10 +65,9 @@ Element * ChainList::GetDernierElement()
 }
 
 ChainList * ChainList::CopyList()
-{
+{    
     ChainList * newList = new ChainList;
-    Element * temp = new Element;
-    temp = this->GetPremierElement();
+    Element * temp = this->GetPremierElement();
     if (temp == nullptr) return newList;
 
     newList->AjouterElement(temp->data);
@@ -143,7 +142,7 @@ bool ChainList::RetirerElement(Trajet * tr)
 void ChainList::RetirerAll()
 {
     Element * temp = queue;
-
+        cout << "temp = queue un retirer all" << endl;
     while (queue != nullptr)
     {
         temp = queue->precedent;
@@ -152,21 +151,19 @@ void ChainList::RetirerAll()
     }
 }
 
-/*void ChainList::InsererListe(ChainList * listeAInserer)
+void ChainList::InsererListe(ChainList * listeAInserer)
 {
+    if (listeAInserer == nullptr) return;
     listeAInserer->GetPremierElement()->precedent = queue;
-    
-}*/
+
+    if (queue != nullptr) queue->suivant = listeAInserer->GetPremierElement();
+    else tete = listeAInserer->GetPremierElement();
+
+    listeAInserer = nullptr;
+}
 
 
 //-------------------------------------------- Constructeurs - destructeur
-/*ChainList::ChainList ( const ChainList & unChainList )
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <ChainList>" << endl;
-#endif
-} //----- Fin de ChainList (constructeur de copie)*/
-
 
 ChainList::ChainList ()
 {
