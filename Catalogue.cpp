@@ -76,6 +76,7 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
         for (int j = 0; j < nbColonnes; j++)
         {
             caseTab[i][j].valeur = 0;
+            caseTab[i][j].blocData = nullptr;
         }
     }
 
@@ -166,6 +167,13 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
     if (ligneInit == -1) 
     {
         cout << "Pas de trajets disponibles" << endl;
+        for(int i = 0; i < nbLignes; i++)
+            delete[] caseTab[i];
+        delete[] caseTab;
+        delete temp;
+        delete trajetsPrecedents;
+        delete[] depart;
+        delete[] destination;
         return;
     }
     for (int i = 0; i < nbLignes; i++)
@@ -178,10 +186,12 @@ void Catalogue::RechercheAvance(char * depart, char * destination)
     }
 
     isPossible(caseTab, ligneInit, destination, trajetsPrecedents, nbDepEtDest);
-
+        cout << "delete begins" << endl;
     for(int i = 0; i < nbLignes; i++)
         delete[] caseTab[i];
     delete[] caseTab;
+    delete temp;
+    delete trajetsPrecedents;
     delete[] depart;
     delete[] destination;
 }
@@ -210,20 +220,26 @@ void Catalogue::isPossible(Bloc ** caseTab, int ligne, const char * destination,
                 ChainList * trjPreced = trajetsPrecedents->CopyList();
                 ChainList * tr = trajets.RechercherParcours(caseTab[ligne][j].blocData->GetDepart(), caseTab[ligne][j].blocData->GetDestination());
                 trjPreced->InsererListe(tr);
-
                 Afficher(trjPreced);
-                tr = nullptr;
-                trjPreced = nullptr;
+                tr->RetirerAll();
+                trjPreced->RetirerAll();
+                delete tr;
+                delete trjPreced;
             } else {
                 ChainList * trjPreced = trajetsPrecedents->CopyList();
                 ChainList * tr = trajets.RechercherParcours(caseTab[ligne][j].blocData->GetDepart(), caseTab[ligne][j].blocData->GetDestination());
                 trjPreced->InsererListe(tr);
-
                 isPossible(caseTab, j-1, destination, trjPreced, nbDepEtDest);
-                trjPreced = nullptr;
+                cout << " appel retirer all de tr" << endl;
+                tr->RetirerAll();
+                                cout << " appel retirer all de trjpreceden" << endl;
+
+                trjPreced->RetirerAll();
+                delete tr;
+                delete trjPreced;
             }
         }
-    }   
+    }
 }
 
 void Catalogue::Ajouter(Trajet * tr)
