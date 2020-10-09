@@ -32,7 +32,7 @@ class TrajetCompose : public Trajet
 public:
 //----------------------------------------------------- Méthodes publiques
     void Afficher();
-    // Mode d'emploi (constructeur de copie) :
+    // Mode d'emploi :
     // Affiche un TrajetCompose : 
     // Au début, affiche le depart et la destination du TrajetCompose.
     // Puis pour chaque escale qui compose le TrajetCompose affiche le
@@ -40,31 +40,40 @@ public:
     // Redéfinie la méthode Afficher() de Trajet.
 
     char * GetDepart();
-    // Mode d'emploi (constructeur de copie) :
+    // Mode d'emploi :
     // Retourne le départ du TrajetCompose.
 
     char * GetDestination();
-    // Mode d'emploi (constructeur de copie) :
+    // Mode d'emploi :
     // Retourne la destination du TrajetCompose.
 
+    ChainList * GetTrajets(); 
+    // Mode d'emploi : 
+    // Retourne la ChainList des escales/trajets simples qui composent le trajet composé. 
+
     void AjouterEscale(Trajet * tr);
-    // Mode d'emploi (constructeur de copie) :
+    // Mode d'emploi :
     // Ajoute l'escale tr au TrajetCompose. 
     // Contrat :
     // tr doit être un TrajetSimple.
 
     bool RetirerEscale(Trajet * tr);
-    // Mode d'emploi (constructeur de copie) :
+    // Mode d'emploi :
     // Retire l'escale tr du TrajetCompose. 
     // Retourne true si l'escale a bien été retirée, false sinon 
     // Contrat :
     // tr doit être un TrajetSimple.
 
     bool EstValide();
-    // Mode d'emploi (constructeur de copie) :
+    // Mode d'emploi :
     // Vérifie si le trajet composé est valide c'est-à-dire si 
     // la destination d'une escale correspond au départ
     // de l'escale suivante. 
+
+    bool EstEgal(Trajet * t); 
+    // Mode d'emploi : 
+    // Vérifie si un trajet est égal à un autre.
+
 
 //-------------------------------------------- Constructeurs - destructeur
     TrajetCompose ( const TrajetCompose & unTrajetCompose ) = default;
@@ -89,4 +98,3 @@ protected:
 
 
 #endif // TRAJETCOMPOSE_H
-

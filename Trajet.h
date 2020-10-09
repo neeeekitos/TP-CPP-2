@@ -32,13 +32,18 @@ public:
 
     virtual char * GetDepart();
     // Mode d'emploi :
-    // Affiche un trajet.
+    // Renvoie le départ du trajet. 
     // Elle est redéfinie par les classes TrajetSimple et TrajetCompose.
     
     virtual char * GetDestination();
     // Mode d'emploi :
-    // Affiche un trajet.
+    // Renvoie la destination du trajet. 
     // Elle est redéfinie par les classes TrajetSimple et TrajetCompose.
+
+    virtual bool EstEgal(Trajet * t); 
+    // Mode d'emploi : 
+    // Vérifie si un trajet est égal à un autre.
+    // Elle est redéfinir par les classes TrajetSimple et TrajetCompose. 
 
 //-------------------------------------------- Constructeurs - destructeur
     Trajet ( const Trajet & unTrajet ) = default;
@@ -58,4 +63,3 @@ protected:
 };
 
 #endif // TRAJET_H
-

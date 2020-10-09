@@ -1,4 +1,4 @@
-#Makefile du TP1
+#Makefile du TP2
 CFLAGS= -g -Wall -Wextra
 
 
