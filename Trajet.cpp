@@ -25,6 +25,7 @@ void Trajet::Afficher( void ) {}
 
 char * Trajet::GetDestination() { return nullptr; }
 char * Trajet::GetDepart() { return nullptr; }
+bool Trajet::EstEgal(Trajet * t) { return false; }
 
 
 //-------------------------------------------- Constructeurs - destructeur

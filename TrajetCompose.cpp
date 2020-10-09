@@ -18,6 +18,7 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "TrajetCompose.h"
+#include "TrajetSimple.h"
 
 //----------------------------------------------------------------- PUBLIC
 
@@ -50,6 +51,11 @@ char * TrajetCompose::GetDestination()
     return trajets.GetDernierElement()->data->GetDestination();
 }
 
+ChainList * TrajetCompose::GetTrajets()
+{
+    return &trajets;
+}
+
 void TrajetCompose::AjouterEscale(Trajet * tr)
 {
     trajets.AjouterElement(tr);
@@ -75,6 +81,31 @@ bool TrajetCompose::EstValide()
         trajet = trajet->suivant;
     }
     return true; 
+}
+
+bool TrajetCompose::EstEgal(Trajet * t) 
+{
+    if (dynamic_cast<TrajetCompose*>(t) != nullptr) {
+        if(dynamic_cast<TrajetCompose*>(t)->GetTrajets()->GetNbElements()!=trajets.GetNbElements()) {
+            return false; 
+        }
+
+
+        Element * trajet = trajets.GetPremierElement();
+        Element * trajetBis = dynamic_cast<TrajetCompose*>(t)->GetTrajets()->GetPremierElement(); 
+
+        while(trajet != nullptr) {
+            if(!trajet->data->EstEgal(trajetBis->data)) {
+                return false; 
+            }
+            trajet = trajet->suivant;
+            trajetBis = trajetBis->suivant;
+        }
+
+        return true; 
+    } 
+
+    return false; 
 }
 
 

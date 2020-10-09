@@ -244,11 +244,16 @@ void Catalogue::isPossible(Bloc ** caseTab, int ligne, const char * destination,
 
 void Catalogue::Ajouter(Trajet * tr)
 {
-    trajets.AjouterElement(tr);
+    if(ContientTrajet(tr)) {
+        cout << "Le trajet est déjà dans le catalogue !" << endl; 
+    } else {
+        trajets.AjouterElement(tr);
+        cout << "Trajet ajouté dans le catalogue." << endl; 
+    }
 }
 
 TrajetSimple * Catalogue::CreerTrajetSimple(char * depart, char * destination, char * moyenTransport)
-{
+{    
     return new TrajetSimple(depart, destination, moyenTransport);
 }
 
@@ -260,6 +265,20 @@ TrajetCompose * Catalogue::CreerTrajetCompose()
 bool Catalogue::RetirerTrajet(Trajet * tr)
 {
     return trajets.RetirerElement(tr);
+}
+
+bool Catalogue::ContientTrajet(Trajet * t) 
+{
+    Element * trajet = trajets.GetPremierElement();
+
+    while (trajet != nullptr)
+    {
+        if(trajet->data->EstEgal(t)) {
+            return true; 
+        }
+        trajet = trajet->suivant;
+    }
+    return false; 
 }
 
 //-------------------------------------------- Constructeurs - destructeur

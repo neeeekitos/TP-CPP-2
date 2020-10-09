@@ -40,6 +40,22 @@ char * TrajetSimple::GetDepart()
     return depart;
 }
 
+char * TrajetSimple::GetMoyenTransport() 
+{
+    return moyenTransport; 
+}
+
+bool TrajetSimple::EstEgal(Trajet * t) 
+{
+    if (dynamic_cast<TrajetSimple*>(t) != nullptr) {
+        if(strcmp(depart,t->GetDepart())==0 && strcmp(destination,t->GetDestination())==0 && strcmp(moyenTransport,dynamic_cast<TrajetSimple*>(t)->GetMoyenTransport())==0)  
+            return true; 
+    } 
+    return false;
+
+}
+
+
 
 //-------------------------------------------- Constructeurs - destructeur
 TrajetSimple::TrajetSimple ( const TrajetSimple & unTrajetSimple ) : Trajet()

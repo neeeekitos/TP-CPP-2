@@ -71,6 +71,10 @@ public:
     // Mode d'emploi :
     //
 
+    bool ContientTrajet(Trajet * t);
+    // Mode d'emploi : 
+    // 
+
 //-------------------------------------------- Constructeurs - destructeur
     Catalogue ( const Catalogue & unCatalogue );
     // Mode d'emploi (constructeur de copie) :

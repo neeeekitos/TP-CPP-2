@@ -45,6 +45,14 @@ public:
     // Renvoie la destination du TrajetSimple.
     // Redéfinie la méthode GetDestination() de Trajet.
 
+    char * GetMoyenTransport();
+    // Mode d'emploi :
+    // Renvoie le moyen de transport du TrajetSimple.
+
+    bool EstEgal(Trajet * t);
+    // Mode d'emploi : 
+    // Vérifie si un trajet est égal à un autre.
+
 
 //-------------------------------------------- Constructeurs - destructeur
 

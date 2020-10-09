@@ -125,7 +125,7 @@ static void AjouterTrajetSimple(Catalogue &catalogue)
   cout << "Moyen de transport du trajet du trajet : ";
   cin.getline(moyenTransport,150);
 
-  catalogue.Ajouter(catalogue.CreerTrajetSimple(depart,destination,moyenTransport));
+  catalogue.Ajouter(catalogue.CreerTrajetSimple(depart,destination,moyenTransport));  
 }
 
 static void AjouterTrajetCompose(Catalogue &catalogue) 
